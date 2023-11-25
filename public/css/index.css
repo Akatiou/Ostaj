@@ -1,0 +1,157 @@
+/*------------------------------------------------------------------------------
+    CSS du header - barre de navigation
+--------------------------------------------------------------------------------*/
+
+.navContainer {
+    width: 100%;
+    max-width: 100%;
+    z-index: 100;
+    background-color: hsla(0, 0%, 100%, .7);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    transition: background-color .2s, color .2s;
+}
+
+.navHeader {
+    width: 100%;
+    max-width: 100%;
+}
+
+.navbarWrapper {
+    position: relative;
+    display: flex;
+    /* flex-direction: column; */
+    padding-top: 6px;
+    padding-bottom: 6px;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid rgba(2, 23, 53, .1);
+    transition: border-color .2s;
+}
+
+.nav-link {
+    font-size: 20px;
+}
+
+
+/*------------------------------------------------------------------------------
+    CSS du logo - barre de navigation: logo
+--------------------------------------------------------------------------------*/
+
+.nav-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    transition: 0.3s;
+}
+
+.nav-logo:hover {
+    transform: rotate(360deg);
+}
+
+
+/*------------------------------------------------------------------------------
+    Liens du navigateur
+--------------------------------------------------------------------------------*/
+
+.nav-link {
+    color: #ffffff;
+    font-size: 20px;
+    font-style: normal;
+    transition: 0.3s;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    opacity: 0.5;
+}
+
+
+/*------------------------------------------------------------------------------
+    Boutons
+--------------------------------------------------------------------------------*/
+
+.tag {
+    color: #151515;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    padding-top: 20px;
+    border-color: #151515;
+    border: 1px solid;
+    padding-left: 28px;
+    border-radius: 3px;
+    padding-right: 28px;
+    padding-bottom: 20px;
+}
+
+
+/*------------------------------------------------------------------------------
+    Liens
+--------------------------------------------------------------------------------*/
+
+.link {
+    gap: var(--dl-space-space-unit);
+    cursor: pointer;
+    display: flex;
+    position: relative;
+    transition: 0.3s;
+    align-items: center;
+    /* border-color: #151515; */
+    flex-direction: row;
+    padding-bottom: 10px;
+    justify-content: center;
+    border-bottom: 1px solid #151515;
+}
+
+.link:hover {
+    opacity: 0.5;
+}
+
+
+/*------------------------------------------------------------------------------
+    Gros Titre
+--------------------------------------------------------------------------------*/
+
+.heading {
+    color: #151515;
+    font-size: 80px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 72px;
+    text-transform: uppercase;
+}
+
+
+/*------------------------------------------------------------------------------
+    Bouton pour formulaire début de projet
+--------------------------------------------------------------------------------*/
+
+.start-button {
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    padding-top: 20px;
+    padding-left: 28px;
+    border-radius: 56px;
+    padding-right: 28px;
+    padding-bottom: 20px;
+    background-color: black;
+}
+
+
+/*------------------------------------------------------------------------------
+    Responsive
+--------------------------------------------------------------------------------*/
+
+@media(max-width: 991px) {
+    .navbar-nav {
+        text-align: right;
+    }
+}
+
+@media(max-width: 308px) {
+    .navbar-title {
+        display: none;
+    }
+}

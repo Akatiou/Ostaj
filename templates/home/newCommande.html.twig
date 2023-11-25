@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OSTAJ - On S'Tient Au Jus !{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ asset('css/home/home.css') }}">{% endblock %}
+
+{% block body %}
+
+
+
+<!-- ======= Mobile nav toggle button ======= -->
+<button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+<!-- ======= Header ======= -->
+<header id="header">
+    <div class="d-flex flex-column">
+
+        <div class="profile">
+            <img src="{{ asset('images/Ostaj.png') }}" alt="" class="img-fluid rounded-circle">
+            <h1 class="text-light"><a href="{{ asset('/') }}">On S'Tient Au Jus !</a></h1>
+        </div>
+
+        <nav class="nav-menu">
+            <ul>
+                <li class="active"><a href="#hero"><i class="bx bx-home"></i> <span>Accueil</span></a></li>
+                <li><a href="#contact"><i class="bx bx-book-content"></i> <span>Réservation</span></a></li>
+
+            </ul>
+        </nav><!-- .nav-menu -->
+        <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+    </div>
+</header><!-- End Header -->
+
+<main id="main">
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Réservation</h2>
+                <p>Réservez votre pain afin de le récupérer dans votre bar à jus !</p>
+            </div>
+
+            <div class="row" data-aos="fade-in">
+
+                <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+                    {{ form_start(form) }}
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                {{ form_widget(form.nomClient) }}
+                                <!-- <label class="form-label" for="nomClient">Nom et prénom</label>
+                                <input type="text" class="form-control" id="nomClient" placeholder="Entrer votre nom et prénom">
+                                <div class="validate"></div> -->
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                {{ form_widget(form.emailClient) }}
+                                <!-- <label class="form-label" for="emailClient">Email</label>
+                                <input type="email" class="form-control" id="emailClient" data-rule="email" data-msg="Entrez un email valide" placeholder="Entrer votre adresse email">
+                                <div class="validate"></div> -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            {{ form_widget(form.telephoneClient) }}
+                            <!-- <label class="form-label" for="numeroClient">Numéro de téléphone</label>
+                            <input type="tel" class="form-control" id="numeroClient" data-rule="minlen:10" data-msg="Au moins 10 chiffres" placeholder="Entrer votre numéro de téléphone">
+                            <div class="validate"></div> -->
+                        </div>
+
+                        <div class="form-group">
+                            {{ form_widget(form.detailCommande) }}
+                           
+                            <!-- <label for="leCampagne" class="form-label select-label">Le campagne</label>
+                            <input type="number" class="form-control" id="leCampagne" min="0" placeholder="Indiquer le nombre de pain souhaité">
+
+                            <label for="leblePop" class="form-label select-label">Le blé pop</label>
+                            <input type="number" class="form-control" id="leblePop" min="0" placeholder="Indiquer le nombre de pain souhaité">
+
+                            <label for="leKalamata" class="form-label select-label">Le kalamata</label>
+                            <input type="number" class="form-control" id="leKalamata" min="0" placeholder="Indiquer le nombre de pain souhaité"> -->
+                        </div>
+                        <div class="mb-3">
+                            <div class="loading">Loading</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Your message has been sent. Thank you!</div>
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <small id="emailHelp" class="form-text text-muted">*Vos données restent confidentielles</small>
+                        </div>
+                        <div class="text-center"><button class="btn btn-success my-2 mx-2">{{ button_label|default('Réserver') }}</button></div>
+                    {{ form_end(form) }}
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Aïssata</span></strong>
+        </div>
+    </div>
+</footer><!-- End  Footer -->
+
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+
+
+
+
+{% endblock %}

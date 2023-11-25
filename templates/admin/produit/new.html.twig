@@ -1,0 +1,26 @@
+{% extends 'admin/shared/admin_base.html.twig' %}
+
+{% block title %}OSTAJ - ajouter un produit{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+
+<body>
+	<div class="main" id="main">
+		<div class="container border shadow col-8 mb-2">
+		<div class="alert">
+			<h1>Ajoutez un nouveau produit</h1>
+			<div>
+				{{ form_start(form) }}
+				{{ form_widget(form) }}
+				<button class="btn btn-success my-2 mx-2">{{ button_label|default('Ajouter') }}</button>
+				{{ form_end(form) }}
+			</div>
+			<a class="btn btn-dark my-2 mx-2" href="{{ path('produit_index') }}">Retour</a>
+		</div>
+	</div>
+	</div>
+</body>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'admin/shared/admin_base.html.twig' %}
+
+{% block title %}OSTAJ - affichage de la commande{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+
+<body>
+	<div class="main" id="main">
+		<div class="section">
+            <div class="col col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <h1 class="text-center">Commande n° {{ commande.id }} de {{commande.nomClient}}</h1>
+                        </div>
+                        <p>{{ numeroClient }}</p>
+                        <table class="table table-light text-center">
+                            <tbody>
+                                <tr>
+                                    <th scope="col-2">{{ commande.nomClient}}: </th>
+                                    <td scope="row">{{ commande.dateCommande | date("d/m/Y") }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col-2">Détail de la commande : </th>
+                                    <td scope="row">{{ commande.detailCommande }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col-2">Descrition</th>
+                                    <td scope="row">{{ detailcommande.produit | raw }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col-2">{{ commande.statut }}</th>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+		                </table>
+                    </div>
+                    <a class="btn btn-dark my-2 mx-2" href="{{ path('commande_index') }}">Retour</a>
+
+                    {{ include('admin/produit/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+{% endblock %}

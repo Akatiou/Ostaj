@@ -1,0 +1,163 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OSTAJ - On S'Tient Au Jus !{% endblock %}
+
+{% block stylesheets %}{% endblock %}
+
+{% block css %}
+<link rel="stylesheet" type="text/css" href="{{ asset('css/home/home.css') }}">{% endblock %}
+
+{% block body %}
+
+
+
+<!-- ======= Mobile nav toggle button ======= -->
+<button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+<!-- ======= Header ======= -->
+<header id="header">
+    <div class="d-flex flex-column">
+
+        <div class="profile">
+            <img src="{{ asset('images/Ostaj.png') }}" alt="" class="img-fluid rounded-circle">
+            <h1 class="text-light"><a href="{{ asset('/') }}">On S'Tient Au Jus !</a></h1>
+        </div>
+
+        <nav class="nav-menu">
+            <ul>
+                <li class="active"><a href="#hero"><i class="bx bx-home"></i> <span>Accueil</span></a></li>
+                <li><a href="#contact"><i class="bx bx-book-content"></i> <span>Réservation</span></a></li>
+
+            </ul>
+        </nav><!-- .nav-menu -->
+        <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+
+    </div>
+</header><!-- End Header -->
+
+<!-- ======= Hero Section ======= -->
+<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
+    <!-- <button class="text-center"><a href="#contact">Réservez !</a></button> -->
+    <div class="hero-container" data-aos="fade-in">
+        <h1>On S'tient Au Jus !</h1>
+        <p>Réserver votre pain: Le <span class="typed" data-typed-items="Campagne, Blé pop, Kalamata"></span></p>
+
+    </div>
+</section><!-- End Hero -->
+
+<main id="main">
+
+    <!-- ======= Contact Section ======= -->
+    <section id="contact" class="contact">
+        <div class="container">
+
+            <div class="section-title">
+                <h2>Réservation</h2>
+                <p>Réservez votre pain afin de le récupérer dans votre bar à jus !</p>
+            </div>
+
+            <div class="row" data-aos="fade-in">
+
+                <div class="col-lg-5 d-flex align-items-stretch">
+                    <div class="info">
+                        <div class="address">
+                            <i class="icofont-google-map"></i>
+                            <h4>Adresse:</h4>
+                            <p>RUE ? , 93100 Montreuil</p>
+                        </div>
+
+                        <div class="email">
+                            <i class="icofont-envelope"></i>
+                            <h4>Email:</h4>
+                            <p>adresse email ?</p>
+                        </div>
+
+                        <div class="phone">
+                            <i class="icofont-phone"></i>
+                            <h4>Téléphone:</h4>
+                            <p>Phone ?</p>
+                        </div>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.78350062028!2d2.4386534762702707!3d48.86233867133268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ec7da95eb4280b%3A0x5389433624054c48!2sMairie%20de%20Montreuil!5e0!3m2!1sfr!2sfr!4v1700268867495!5m2!1sfr!2sfr" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+                        <!-- <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe> -->
+                    </div>
+
+                </div>
+                
+                <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+                    <div class="info">
+                        {{ form_start(form) }}
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label class="form-label" for="nomClient">Nom et prénom</label>
+                                {{ form_widget(form.nomClient) }}
+                                <!-- 
+                                <input type="text" class="form-control" id="nomClient" placeholder="Entrer votre nom et prénom">
+                                <div class="validate"></div> -->
+                            </div>
+
+                            <div class="form-group col-md-6">
+                                <label class="form-label" for="emailClient">Email</label>
+                                {{ form_widget(form.emailClient) }}
+                                <!-- 
+                                <input type="email" class="form-control" id="emailClient" data-rule="email" data-msg="Entrez un email valide" placeholder="Entrer votre adresse email">
+                                <div class="validate"></div> -->
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="form-label" for="numeroClient">Numéro de téléphone</label>
+                            {{ form_widget(form.telephoneClient) }}
+                            <!-- 
+                            <input type="tel" class="form-control" id="numeroClient" data-rule="minlen:10" data-msg="Au moins 10 chiffres" placeholder="Entrer votre numéro de téléphone">
+                            <div class="validate"></div> -->
+                        </div>
+
+                        <div class="form-group">
+                            {# Boucle pour afficher les champs des produits #}
+                            {% for produitId, produitField in form.children | filter(field => field.vars.name starts with 'produit.') %}
+                                <div>
+                                    {{ form_label(produitField) }}
+                                    {{ form_widget(produitField) }}
+                                    {{ form_errors(produitField) }}
+                                </div>
+                                
+                                <div>
+                                    {# Champs de quantité correspondant #}
+                                    {% set quantiteId = 'quantite_' ~ produitId|split('_')[1] %}
+                                    {{ form_label(form[quantiteId]) }}
+                                    {{ form_widget(form[quantiteId]) }}
+                                    {{ form_errors(form[quantiteId]) }}
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <div class="form-group col-md-6">
+                            <small id="emailHelp" class="form-text text-muted">*Vos données restent confidentielles</small>
+                        </div>
+                        <div class="text-center"><button class="btn btn-success my-2 mx-2">{{ button_label|default('Réserver') }}</button></div>
+                    {{ form_end(form) }}
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section><!-- End Contact Section -->
+
+</main><!-- End #main -->
+
+<!-- ======= Footer ======= -->
+<footer id="footer">
+    <div class="container">
+        <div class="copyright">
+            &copy; Copyright <strong><span>Aïssata</span></strong>
+        </div>
+    </div>
+</footer><!-- End  Footer -->
+
+<a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
+
+
+
+
+
+{% endblock %}

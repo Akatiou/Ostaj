@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+      <title>OSTAJ - On S'Tient Au Jus !</title>
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+
+      <!-- Favicons -->
+      <!-- <link href="{{ asset('img/favicon.png') }}" rel="icon"> -->
+
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+     <!-- Vendor CSS Files -->
+        <link href="{{ asset('dash/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('dash/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+        <link href="{{ asset('dash/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('dash/vendor/quill/quill.snow.css') }}" rel="stylesheet">
+        <link href="{{ asset('dash/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+        <link href="{{ asset('dash/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+        <link href="{{ asset('dash/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+        {% block stylesheets %}{% endblock %}
+
+      <!-- Template Main CSS File -->
+      <link href="{{ asset('dash/style.css') }}" rel="stylesheet" type="text/css">{% block css %}{% endblock %}
+
+    </head>
+
+
+    <body>
+        <div class="main"></div>
+        <!-- ======= Header ======= -->
+        <header id="header" class="header fixed-top d-flex align-items-center">
+
+            <div class="d-flex align-items-center justify-content-between">
+            <a href="{{ ('/Admin') }}" class="logo d-flex align-items-center">
+                <!-- <img src="{{ asset('images/Ostaj.png') }}" alt=""> -->
+                <span class="d-none d-lg-block">On S'Tient Au Jus !</span>
+            </a>
+            <i class="bi bi-list toggle-sidebar-btn"></i>
+            </div>
+            <!-- End Logo -->
+
+            <!-- Bouton de déconnexion -->
+            <nav class="header-nav ms-auto">
+            <ul class="d-flex align-items-center">
+                <li class="nav-item dropdown">
+                    <h4 class="pe-3">Déconnexion</h4>
+                </li>
+            <!-- End bouton de déconnexion -->
+            </ul>
+            </nav>
+            <!-- End Icons Navigation -->
+
+        </header><!-- End Header -->
+
+        <!-- ======= Sidebar ======= -->
+        <aside id="sidebar" class="sidebar">
+
+        <ul class="sidebar-nav" id="sidebar-nav">
+
+            <li class="nav-item">
+            <a class="nav-link " href="{{ asset('/admin') }}">
+                <i class="bi bi-grid"></i>
+                <span>Dashboard</span>
+            </a>
+            </li><!-- End Dashboard Nav -->
+
+            <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ asset('/admin/commande') }}">
+                <i class="bi bi-journal-text"></i>
+                <span>Réservations</span>
+            </a>
+            </li><!-- End Réservations Page Nav -->
+
+            <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ asset('/admin/produit') }}">
+                <i class='bx bx-store' ></i>
+                <span>Produits</span>
+            </a>
+            </li><!-- End Produits Page Nav -->
+
+            <li class="nav-item">
+            <a class="nav-link collapsed" href="{{ asset('/admin/user') }}">
+                <i class="bi bi-person"></i>
+                <span>Utilisateurs</span>
+            </a>
+            </li><!-- End User Page Nav -->
+
+            <li class="nav-item">
+            <a class="nav-link collapsed" href="pages-login.html">
+                <i class="bi bi-box-arrow-in-right"></i>
+                <span>Déconnexion</span>
+            </a>
+            </li><!-- End Logout Page Nav -->
+
+        </ul>
+
+        </aside><!-- End Sidebar-->
+
+
+        {% block body %}{% endblock %}
+        {% block footer %}{% endblock %}
+
+        {% block javascripts %}
+
+        <!-- Vendor JS Files -->
+        <script src="{{ asset('dash/vendor/apexcharts/apexcharts.min.js') }}"></script>
+        <script src="{{ asset('dash/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+        <script src="{{ asset('dash/vendor/chart.js/chart.umd.js') }}"></script>
+        <script src="{{ asset('dash/vendor/echarts/echarts.min.js') }}"></script>
+        <script src="{{ asset('dash/vendor/quill/quill.min.js') }}"></script>
+        <script src="{{ asset('dash/vendor/simple-datatables/simple-datatables.js') }}"></script>
+        <script src="{{ asset('dash/vendor/tinymce/tinymce.min.js') }}"></script>
+        <script src="{{ asset('dash/vendor/php-email-form/validate.js') }}"></script>
+
+        <!-- Template Main JS File -->
+        <script src="{{ asset('dash/js/main.js') }}"></script>
+        {% endblock %}
+    </body>
+</html>

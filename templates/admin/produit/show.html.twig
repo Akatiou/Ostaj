@@ -1,0 +1,49 @@
+{% extends 'admin/shared/admin_base.html.twig' %}
+
+{% block title %}OSTAJ - ajouter un produit{% endblock %}
+
+{% block stylesheets %}
+{% endblock %}
+
+{% block body %}
+
+<body>
+	<div class="main" id="main">
+		<div class="section">
+            <div class="col col-lg-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="row">
+                            <h1 class="text-center">{{produit.nomProduit}}</h1>
+                        </div>
+                        <table class="table table-light text-center">
+                            <tbody>
+                                <tr>
+                                    <th scope="col-2">Produit ajouté le</th>
+                                    <td scope="row">{{ produit.CreatedAt | date("d/m/Y") }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col-2">Nom du pain</th>
+                                    <td scope="row">{{ produit.nomProduit }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col-2">Descrition</th>
+                                    <td scope="row">{{ produit.descriptionProduit | raw }}</td>
+                                </tr>
+                                <tr>
+                                    <th scope="col-2">Action</th>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+		                </table>
+                    </div>
+                    <a class="btn btn-dark my-2 mx-2" href="{{ path('produit_index') }}">Retour</a>
+			        <a class="btn btn-info my-2 mx-2" href="{{ path('produit_edit', {'id': produit.id}) }}">Modifier</a>
+
+                    {{ include('admin/produit/_delete_form.html.twig') }}
+                </div>
+            </div>
+        </div>
+	</div>
+</body>
+{% endblock %}

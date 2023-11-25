@@ -1,0 +1,66 @@
+{% extends 'admin/shared/admin_base.html.twig' %}
+{% block title %}OSTAJ - Liste des utilisateurs{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+
+<body>
+	<div class="main" id="main">
+		<div class="section">
+			<div class="col col-lg-12">
+				<div class="card">
+					<div class="card-body">
+						<div class="row justify-content-between">
+							<h1 class="col-sm card-title m-2">Liste des utilisateurs et leur rôle :</h1>
+							<a class="col-sm-3 btn btn-dark align-self-center m-2" href="{{ path('user_new') }}">Ajouter un utilisateur</a>
+						</div>
+						<table class="table table-sm table-hover text-center">
+							<thead>
+								<tr>
+									<th scope="col-2">Id</th>
+									<th scope="col-2">Prénom et nom</th>
+									<th scope="col-2">Email</th>
+									<th scope="col-2">Roles</th>
+									<th scope="col-2">actions</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for user in users %}
+									<tr>
+										<td scope="row">{{ user.id }}</td>
+										<td scope="row">{{ user.username }}</td>
+										<td scope="row">{{ user.email }}</td>
+										<td scope="row">{{ user.roles ? user.roles|json_encode : '' }}</td>
+										<td scope="row">
+											<a href="{{ path('user_show', {'id': user.id}) }}" class="mx-3">
+												<i class="fas fa-eye"></i>
+												Voir
+											</a>
+											<a href="{{ path('user_edit', {'id': user.id}) }}" class="mx-2">
+												<i class="fas fa-user-edit"></i>
+												Modifier
+											</a>
+											<a href="{{ path('user_delete', {'id': user.id}) }}">
+												<i class="fas fa-user-slash"></i>
+												Supprimer
+											</a>
+										</td>
+									</tr>
+								{% else %}
+									<tr>
+										<td colspan="6">Aucun utilisateurs trouvé</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+				<a class="btn btn-dark" href="{{ path('user_new') }}">Ajouter un utilisateur</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+{% endblock %}
