@@ -102,16 +102,13 @@
                             <div id="detailCommande" data-prototype="{{ form_widget(form.detailCommande.vars.prototype)|e('html_attr') }}">
                                 {% for produitForm in form.detailCommande %}
                                     <div class="produit-quantite">
-                                        {{ form_row(produitForm.produit) }}
+                                        {{ form_row(produitForm.produit, {'attr': {'class': 'produit'}}) }}
                                         {{ form_row(produitForm.quantite) }}
                                     </div>
                                 {% endfor %}
                             </div>
                             <a href="#" class="add_produit_link" style="color: #1395A7">Ajouter un produit</a>
                         </div>
-
-                        
-
                         <div class="form-group col-md-6">
                             <small id="emailHelp" class="form-text text-muted">*Vos données restent confidentielles</small>
                         </div>
@@ -140,24 +137,57 @@
 
 <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
 {% block javascripts %}
+
+
+
+
+
+
+
 <script>
     // Script pour ajouter dynamiquement des champs de produits
-    var $detailCommande = $('#detailCommande');
-    var index = {{ form.detailCommande|length }};
+var $detailCommande = $('#detailCommande');
+var index = {{ form.detailCommande|length }};
 
-    $('.add_produit_link').click(function(e) {
-        addProduitForm($detailCommande);
-        e.preventDefault();
-        return false;
+$('.add_produit_link').click(function(e) {
+    addProduitForm($detailCommande);
+    e.preventDefault();
+    return false;
+});
+
+function addProduitForm($detailCommande) {
+    var template = $detailCommande.attr('data-prototype').replace(/__name__/g, index);
+    var $produitForm = $(template);
+
+    // Désélectionner le produit ayant l'ID 1 dans le champ de sélection de produits
+    $produitForm.find('select').val(null);
+
+    // Empêcher de sélectionner un produit déjà choisi dans un autre champ de produit
+    var selectedProducts = [];
+    $detailCommande.find('select').each(function() {
+        var selectedProduct = $(this).val();
+        if (selectedProduct !== null) {
+            selectedProducts.push(selectedProduct);
+        }
     });
 
-    function addProduitForm($detailCommande) {
-        var template = $detailCommande.attr('data-prototype').replace(/__name__/g, index);
-        var $produitForm = $(template);
-        $detailCommande.append($produitForm);
-        index++;
-    }
+    $produitForm.find('select').change(function() {
+        var selectedProduct = $(this).val();
+        if (selectedProducts.includes(selectedProduct)) {
+            alert("Ce produit a déjà été choisi. Veuillez sélectionner un autre produit.");
+            $(this).val(null);
+        } else {
+            selectedProducts.push(selectedProduct);
+        }
+    });
+
+    $detailCommande.append($produitForm);
+    index++;
+}
+
+
 </script>
+
 {% endblock %}
 
 

@@ -75,7 +75,7 @@
                 <span>Réservations</span>
                 <i class="bi bi-chevron-down ms-auto"></i>
             </a>
-            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+            <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
                 <li>
                     <a href="{{ asset('admin/commande/encours') }}">
                     <i class="bi bi-circle"></i><span>Réservations en cours</span>
@@ -90,10 +90,23 @@
             </li><!-- End Réservations Page Nav -->
 
             <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ asset('/admin/produit') }}">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="{{ asset('/admin/produit') }}">
                 <i class='bx bx-store' ></i>
                 <span>Produits</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
             </a>
+            <ul id="components-nav" class="nav-content collapse show" data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ asset('admin/produit') }}">
+                    <i class="bi bi-circle"></i><span>Tous les produits</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ asset('admin/produit/new') }}">
+                    <i class="bi bi-circle"></i><span>Ajouter un produit</span>
+                    </a>
+                </li>
+            </ul>
             </li><!-- End Produits Page Nav -->
 
             <li class="nav-item">
@@ -117,10 +130,11 @@
         <div class="col col-lg">
             {% for label, messages in app.flashes %}
             <div class="container text-center my-5">
-                <div class="alert alert-{{label}}">
+                <div class="alert alert-{{label}} alert-dismissible fade show">
                 {% for message in messages %}
                     {{message | raw}}
                 {% endfor %}
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 </div>
             </div>
             {% endfor %}

@@ -19,6 +19,9 @@ class ProduitQuantiteType extends AbstractType
             ->add('produit', EntityType::class, [
                 'class' => Produit::class,
                 'choice_label' => 'nomProduit',
+                'attr' => [
+                    'placeholder' => 'Sélectionner un produit',
+                ],
                 // ... autres options pour le champ produit
             ])
             ->add('quantite', IntegerType::class, [

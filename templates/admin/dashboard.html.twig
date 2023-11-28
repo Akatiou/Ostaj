@@ -33,21 +33,12 @@
 
                 <div class="card-body">
                   <a href="{{ asset('/admin/commande/encours')}}"><h5 class="card-title">Réservations en cours</h5></a>
-
-                  <!-- <div class="d-flex align-items-center">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                      <i class="bi bi-cart"></i>
-                    </div>
-                    <div class="ps-3">
-                      <h6>Nombre total de réservations :  commandes | length </h6>
-                    </div>
-                  </div> -->
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                        <a href="{{ asset('/admin/commande/encours')}}"><h6>Total des réservations en cours : {{ countEnCours }}</h6></a>
+                        <a href="{{ asset('/admin/commande/encours')}}"><h6>Total en cours : {{ countEnCours }} réservations</h6></a>
                     </div>
                   </div>
                 </div>
@@ -67,7 +58,7 @@
                       <i class="bx bx-store"></i>
                     </div>
                     <div class="ps-3">
-                      <a href="{{ asset('/admin/produit')}}"><h6>Nombre total de produits : {{ produits | length }}</h6></a>
+                      <a href="{{ asset('/admin/produit')}}"><h6>Nombre de produit : {{ produits | length }}</h6></a>
                     </div>
                   </div>
                 </div>
@@ -87,13 +78,36 @@
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <a href="{{ asset('/admin/user') }}"><h6>Nombre total d'utilisateurs : {{ users | length }}</h6></a>
+                      <a href="{{ asset('/admin/user') }}"><h6>Nombre d'utilisateurs : {{ users | length }}</h6></a>
                     </div>
                   </div>
 
                 </div>
               </div>
 
+            </div><!-- End Customers Card -->
+
+            <!-- Boucle qui affiche la somme des produits, par id produit, dans les commandes en cours -->
+            <div class="row">
+              {% for produit in produits %}
+                  <div class="col-xxl-4 col-md-6">
+                      <div class="card info-card revenue-card">
+                          <div class="card-body">
+                              <h5 class="card-title">
+                                  {{ produit.nomProduit }}
+                              </h5>
+                              <div class="d-flex align-items-center">
+                                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                                      <i class="bx bx-store"></i>
+                                  </div>
+                                  <div class="ps-3">
+                                      <h6>Total (réservation en cours) : {{ sumsByProduct[produit.id] ?? 0 }}</h6>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              {% endfor %}
             </div><!-- End Customers Card -->
 
             <!-- Reports -->
@@ -192,7 +206,7 @@
                   <div class="card-body">
                     <div class="row">
                       <h1 class="col-sm card-title m-2">Liste des produits :</h1>
-                      <a class="col-sm-3 btn btn-dark align-self-center m-2" href="{{ path('produit_new') }}">Ajouter un produit</a>
+                      <a class="col-sm-3 btn btn-outline-primary align-self-center m-2" href="{{ path('produit_new') }}">Ajouter un produit</a>
                     </div>
                     <table class="table table-hover text-center">
                       <thead>
@@ -210,9 +224,9 @@
                             <td scope="row">{{ produit.nomProduit }}</td>
                             <td scope="row">{{ produit.descriptionProduit }}</td>
                             <td scope="row" class="d-flex flex-column">
-                              <a class="btn btn-dark mx-2 my-2 p-2" href="{{ path('produit_show', {'id': produit.id}) }}">Voir</a>
-                              <a class="btn btn-dark mx-2 p-2" href="{{ path('produit_edit', {'id': produit.id}) }}">Modifier</a>
-                              <a class="btn btn-dark mx-2 my-2 p-2" href="{{ path('produit_delete', {'id': produit.id}) }}">Supprimer</a>
+                              <a class="btn btn-outline-dark btn-sm mx-2 my-2 p-2" href="{{ path('produit_show', {'id': produit.id}) }}">Voir</a>
+                              <a class="btn btn-outline-success btn-sm mx-2 p-2" href="{{ path('produit_edit', {'id': produit.id}) }}">Modifier</a>
+                              <a class="btn btn-outline-danger btn-sm mx-2 my-2 p-2" href="{{ path('produit_delete', {'id': produit.id}) }}">Supprimer</a>
                             </td>
                           </tr>
                         {% else %}
@@ -253,9 +267,9 @@
                                     <td scope="row">{{ user.email }}</td>
                                     <td scope="row">{{ user.roles ? user.roles|json_encode : '' }}</td>
                                     <td scope="row" class="d-flex flex-column">
-                                        <a href="{{ path('user_show', {'id': user.id}) }}" class="btn btn-dark mx-2 my-2">Voir</a>
-                                        <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-dark mx-2 my-2">Modifier</a>
-                                        <a href="{{ path('user_delete', {'id': user.id}) }}" class="btn btn-dark mx-2 my-2">Supprimer</a>
+                                        <a href="{{ path('user_show', {'id': user.id}) }}" class="btn btn-outline-dark mx-2 my-2 btn-sm">Voir</a>
+                                        <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-outline-success mx-2 my-2 btn-sm">Modifier</a>
+                                        <a href="{{ path('user_delete', {'id': user.id}) }}" class="btn btn-outline-danger mx-2 my-2 btn-sm">Supprimer</a>
                                     </td>
                                 </tr>
                             {% else %}
@@ -265,7 +279,7 @@
                             {% endfor %}
                         </tbody>
                     </table>
-				    <a class="btn btn-dark" href="{{ path('user_new') }}">Ajouter un utilisateur</a>
+				    <a class="btn btn-outline-primary" href="{{ path('user_new') }}">Ajouter un utilisateur</a>
                 </div>
               </div>
             </div><!-- Fin liste des utilisateurs -->

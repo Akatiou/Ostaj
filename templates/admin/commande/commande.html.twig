@@ -77,9 +77,6 @@
 												{{ quantity }}
 											{% endif %}
 										</td>
-										<!-- <td scope="row">quantite[0]</td>
-										<td scope="row">quantite[1]</td>
-										<td scope="row">quantite[2]</td> -->
 										<td scope="row">{{ commande.statut }}</td>
                                         <td scope="row">{{ commande.dateCommande | date("d/m/Y") }}</td>
 									</tr>
@@ -95,5 +92,38 @@
 			</div>
 		</div>
 	</div>
+
+	<!-- {% block javascript %}
+	<script>
+		document.addEventListener('DOMContentLoaded', function() {
+    const commandes = document.querySelectorAll('tbody tr'); // Sélectionne chaque ligne correspondant à une commande
+
+    commandes.forEach(commande => {
+        const produits = {}; // Stocke les quantités par produit pour chaque commande
+
+        // Récupère les détails de la commande
+        const detailsCommande = Array.from(commande.querySelectorAll('td[class^="text-center"]'));
+
+        detailsCommande.forEach(detail => {
+            const produitId = detail.dataset.produitId; // Récupère l'ID du produit depuis un attribut data-*
+            const quantite = parseInt(detail.textContent.trim()) || 0; // Récupère la quantité ou définit 0 si vide
+
+            // Si le produit n'est pas déjà dans la liste, l'ajoute
+            if (!(produitId in produits)) {
+                produits[produitId] = 0;
+            }
+
+            // Ajoute la quantité du produit à la liste
+            produits[produitId] += quantite;
+        });
+
+        // Crée une cellule pour afficher le total de la quantité par produit
+        const totalCell = document.createElement('td');
+        totalCell.textContent = Object.values(produits).join(', '); // Affiche les totaux des quantités par produit
+        commande.appendChild(totalCell); // Ajoute la cellule au tableau pour chaque commande
+    });
+});
+	</script>
+{% endblock %} -->
 </body>
 {% endblock %}
