@@ -70,10 +70,23 @@
             </li><!-- End Dashboard Nav -->
 
             <li class="nav-item">
-            <a class="nav-link collapsed" href="{{ asset('/admin/commande') }}">
+            <a class="nav-link collapsed" data-bs-target="#components-nav" data-bs-toggle="collapse" href="{{ asset('/admin/commande') }}">
                 <i class="bi bi-journal-text"></i>
                 <span>Réservations</span>
+                <i class="bi bi-chevron-down ms-auto"></i>
             </a>
+            <ul id="components-nav" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+                <li>
+                    <a href="{{ asset('admin/commande/encours') }}">
+                    <i class="bi bi-circle"></i><span>Réservations en cours</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ asset('admin/commande') }}">
+                    <i class="bi bi-circle"></i><span>Toutes les réservations</span>
+                    </a>
+                </li>
+            </ul>
             </li><!-- End Réservations Page Nav -->
 
             <li class="nav-item">
@@ -101,6 +114,17 @@
 
         </aside><!-- End Sidebar-->
 
+        <div class="col col-lg">
+            {% for label, messages in app.flashes %}
+            <div class="container text-center my-5">
+                <div class="alert alert-{{label}}">
+                {% for message in messages %}
+                    {{message | raw}}
+                {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
 
         {% block body %}{% endblock %}
         {% block footer %}{% endblock %}

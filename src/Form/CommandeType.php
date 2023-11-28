@@ -6,14 +6,13 @@ use App\Entity\Produit;
 use App\Entity\Commande;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-use Symfony\Component\Form\Extension\Core\Type\FormType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class CommandeType extends AbstractType
 {
@@ -34,41 +33,27 @@ class CommandeType extends AbstractType
                     'class' => 'form-control'
                 ]
             ])
-            ->add('telephoneClient', NumberType::class, [
+            ->add('telephoneClient', TextType::class, [
                 'label' => 'Numéro de téléphone',
                 'attr' => [
                     'placeholder' => 'Entrer votre numéro',
                     'class' => 'form-control'
                 ]
+            ])
+            ->add('detailCommande', CollectionType::class, [
+                'entry_type' => ProduitQuantiteType::class,
+                'entry_options' => ['label' => false],
+                'allow_add' => true,
+                'by_reference' => false,
+                // ... autres options
             ]);
-
-        // Récupérer tous les produits depuis la base de données
-        $produit = $options['produit'];
-
-        foreach ($produit as $produit) {
-            $builder
-                ->add('produit_' . $produit->getId(), EntityType::class, [
-                    'class' => Produit::class,
-                    'choice_label' => 'nomProduit',
-                    'label' => $produit->getNomProduit(),
-                    'choice_value' => 'id',
-                    'data' => $produit,
-                    'mapped' => false
-                    // ... autres options pour le champ produit
-                ])
-                ->add('quantite' . $produit->getId(), IntegerType::class, [
-                    'label' => 'Quantité pour ' . $produit->getNomProduit(),
-                    'attr' => ['min' => 0],
-                    'mapped' => false
-                ]);
-        }
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
             'data_class' => Commande::class,
-            'produit' => null,
+            'produit' => null, // Définissez vos options personnalisées ici
         ]);
     }
 }

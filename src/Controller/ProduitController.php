@@ -51,7 +51,7 @@ class ProduitController extends AbstractController
 
                 $entityManager->flush();
 
-                $this->addFlash('sucess', "Votre avez ajouté le produit :  {$data->getnomProduit()} !");
+                $this->addFlash('success', "Votre avez ajouté le produit :  {$data->getnomProduit()} !");
 
                 return $this->redirectToRoute('produit_index');
             }
@@ -104,7 +104,7 @@ class ProduitController extends AbstractController
 
             $em->flush();
 
-            $this->addFlash('sucess', "Le produit :  {$data->getnomProduit()} a bien été modifié !");
+            $this->addFlash('success', "Le produit :  {$data->getnomProduit()} a bien été modifié !");
 
             return $this->redirectToRoute('produit_show', [
                 'id' => $id
@@ -142,6 +142,7 @@ class ProduitController extends AbstractController
         $entityManager->remove($produit);
         $entityManager->flush();
 
+        $this->addFlash('success', 'Le produit a bien été supprimé.');
         return $this->redirectToRoute('produit_index');
     }
 }

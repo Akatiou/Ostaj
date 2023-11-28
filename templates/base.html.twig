@@ -31,7 +31,17 @@
 
 
     <body>
-
+      
+        {% for label, messages in app.flashes %}
+        <div class="container text-center my-5">
+            <div class="alert alert-{{label}}">
+              {% for message in messages %}
+                {{message | raw}}
+              {% endfor %}
+            </div>
+          </div>
+        {% endfor %}
+      
         {% block body %}{% endblock %}
         {% block footer %}{% endblock %}
 

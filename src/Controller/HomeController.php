@@ -42,20 +42,36 @@ class HomeController extends AbstractController
             // Traiter les données du formulaire ici, par exemple, sauvegarder la commande en base de données
             $commande->setNomClient($data->getnomClient());
 
-            // Créer une nouvelle instance de DetailCommande et l'associer à la commande
-            $detailCommande = new DetailCommande();
-            $detailCommande->setNomProduit($data->getNomProduit()); // Ajustez la récupération du nom du produit selon vos besoins
-            $detailCommande->setQuantite($data->getQuantite()); // Ajustez la récupération de la quantité selon vos besoins
-
-            // Associer la DetailCommande à la Commande
-            $commande->addDetailCommande($detailCommande);
-
             $entityManager->persist($commande);
-            $entityManager->persist($detailCommande);
+            $entityManager->flush();
+
+            // Maintenant, après avoir enregistré la commande, nous allons créer la DetailCommande associée à cette commande
+
+
+            // Récupérez les données des produits et quantités soumises dans le formulaire
+            $detailCommandes = $data->getDetailCommande();
+
+            foreach ($detailCommandes as $detailCommandeData) {
+                $produitId = $detailCommandeData->getProduit()->getId();
+                $produit = $entityManager->getRepository(Produit::class)->find($produitId);
+
+                if ($produit) {
+                    $detailCommande = new DetailCommande();
+                    $detailCommande->setNomProduit($produit->getNomProduit());
+                    $detailCommande->setQuantite($detailCommandeData->getQuantite());
+
+                    $detailCommande->setProduit($produit);
+                    $detailCommande->setCommande($commande);
+
+                    $entityManager->persist($detailCommande);
+                } else {
+                    $this->addFlash('error', 'Produit non trouvé');
+                }
+            }
 
             $entityManager->flush();
 
-            $this->addFlash('sucess', "{$data->getnomClient()}, Votre réservation a bien été enregistré !");
+            $this->addFlash('success', "{$data->getNomClient()}, Votre réservation a bien été enregistrée !");
 
             // Redirection vers une autre page après la soumission réussie du formulaire
             return $this->redirectToRoute('home');

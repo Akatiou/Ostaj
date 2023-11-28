@@ -32,14 +32,22 @@
               <div class="card info-card sales-card">
 
                 <div class="card-body">
-                  <a href="{{ asset('/admin/commande')}}"><h5 class="card-title">Réservations</h5></a>
+                  <a href="{{ asset('/admin/commande/encours')}}"><h5 class="card-title">Réservations en cours</h5></a>
 
-                  <div class="d-flex align-items-center">
+                  <!-- <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-cart"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>Nombre total de réservations :  {{ commande | length }} </h6>
+                      <h6>Nombre total de réservations :  commandes | length </h6>
+                    </div>
+                  </div> -->
+                  <div class="d-flex align-items-center">
+                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                        <i class="bi bi-cart"></i>
+                    </div>
+                    <div class="ps-3">
+                        <a href="{{ asset('/admin/commande/encours')}}"><h6>Total des réservations en cours : {{ countEnCours }}</h6></a>
                     </div>
                   </div>
                 </div>
@@ -52,14 +60,14 @@
               <div class="card info-card revenue-card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Produits</span></h5>
+                  <a href="{{ asset('/admin/produit')}}"><h5 class="card-title">Produits</h5></a>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bx bx-store"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>Nombre total de produits : {{ produit | length }}</h6>
+                      <a href="{{ asset('/admin/produit')}}"><h6>Nombre total de produits : {{ produits | length }}</h6></a>
                     </div>
                   </div>
                 </div>
@@ -72,14 +80,14 @@
 
               <div class="card info-card customers-card">
                 <div class="card-body">
-                  <h5 class="card-title">Utilisateurs</h5>
+                  <a href="{{ asset('/admin/user') }}"><h5 class="card-title">Utilisateurs</h5></a>
 
                   <div class="d-flex align-items-center">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                       <i class="bi bi-people"></i>
                     </div>
                     <div class="ps-3">
-                      <h6>Nombre total d'utilisateurs : {{ users | length }}</h6>
+                      <a href="{{ asset('/admin/user') }}"><h6>Nombre total d'utilisateurs : {{ users | length }}</h6></a>
                     </div>
                   </div>
 
@@ -93,13 +101,14 @@
               <div class="card">
 
                 <div class="card-body">
-                  <h5 class="card-title">Réservation de pains</h5>
+                  <a href="{{ asset('/admin/commande/encours')}}"><h5 class="card-title">Réservation de pains en cours</h5></a>
                   <table class="table table-hover">
                         <thead>
                             <tr>
                                 <th>N° de commande</th>
                                 <th>Nom du client</th>
-                                <th>Le Campagne</th>
+                                <th>Numéro de téléphone</th>
+                                <th>le Campagne</th>
                                 <th>Le blé pop</th>
                                 <th>Le kamata</th>
                                 <th>Date</th>
@@ -109,20 +118,52 @@
                             {% for commande in commande %}
                                 <tr>
                                     <td>
-                                      <a href="{{ path('commande_show', {'id': commande.id}) }}">{{ commande.id }}</a>
-
+                                      <a class="alert-link" href="{{ path('commande_show', {'id': commande.id}) }}">{{ commande.id }}</a>
                                     </td>
                                     <td>
-                                        <a href="{{ path('commande_show', {'id': commande.id}) }}">{{ commande.nomClient }}</a>
+                                        <a class="alert-link" href="{{ path('commande_show', {'id': commande.id}) }}">{{ commande.nomClient }}</a>
+                                    </td>
+                                    <td class="text-center">{{ commande.telephoneClient }}</td>
+                                    <td class="text-center">
+                                      {% set quantity = 0 %}
+                                      {% for detailCommande in detailsCommandes[commande.id] %}
+                                          {% if detailCommande.produit.id == 1 %}
+                                              {% set quantity = detailCommande.quantite %}
+                                          {% endif %}
+                                      {% endfor %}
+                                      {% if quantity is null %}
+                                          0
+                                      {% else %}
+                                          {{ quantity }}
+                                      {% endif %}
                                     </td>
                                     <td class="text-center">
-                                        nom du pain
+                                      {% set quantity = 0 %}
+                                      {% for detailCommande in detailsCommandes[commande.id] %}
+                                          {% if detailCommande.produit.id == 2 %}
+                                              {% set quantity = detailCommande.quantite %}
+                                          {% endif %}
+                                      {% endfor %}
+                                      {% if quantity is null %}
+                                          0
+                                      {% else %}
+                                          {{ quantity }}
+                                      {% endif %}
                                     </td>
                                     <td class="text-center">
-                                        Nom du produit
-                                    <td class="text-center">
-                                        {{ commande.datecommande | date("d/m/Y")  }}
+                                      {% set quantity = 0 %}
+                                      {% for detailCommande in detailsCommandes[commande.id] %}
+                                          {% if detailCommande.produit.id == 3 %}
+                                              {% set quantity = detailCommande.quantite %}
+                                          {% endif %}
+                                      {% endfor %}
+                                      {% if quantity is null %}
+                                          0
+                                      {% else %}
+                                          {{ quantity }}
+                                      {% endif %}
                                     </td>
+                                    <td class="text-center">{{ commande.datecommande | date("d/m/Y")  }}</td>
                                 </tr>
                             {% endfor %}
                         </tbody>
@@ -132,7 +173,62 @@
               </div>
             </div><!-- End Reports -->
 
-            <!-- Recent Sales -->
+            <!-- Début liste des produits -->
+            <div class="col-12">
+			        <div class="col col-lg-12">
+
+                {% for label,messages in app.flashes %}
+                  <div class="container text-center my-5">
+                    <div class="alert alert-success {{ label }}">
+                      {% for message in messages %}
+                        <p>{{message | raw }}</p>
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endfor %}
+
+
+                <div class="card">
+                  <div class="card-body">
+                    <div class="row">
+                      <h1 class="col-sm card-title m-2">Liste des produits :</h1>
+                      <a class="col-sm-3 btn btn-dark align-self-center m-2" href="{{ path('produit_new') }}">Ajouter un produit</a>
+                    </div>
+                    <table class="table table-hover text-center">
+                      <thead>
+                        <tr>
+                          <th scope="col">Id</th>
+                          <th scope="col">Nom du produit</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for produit in produits %}
+                          <tr>
+                            <td scope="row">{{ produit.id }}</td>
+                            <td scope="row">{{ produit.nomProduit }}</td>
+                            <td scope="row">{{ produit.descriptionProduit }}</td>
+                            <td scope="row" class="d-flex flex-column">
+                              <a class="btn btn-dark mx-2 my-2 p-2" href="{{ path('produit_show', {'id': produit.id}) }}">Voir</a>
+                              <a class="btn btn-dark mx-2 p-2" href="{{ path('produit_edit', {'id': produit.id}) }}">Modifier</a>
+                              <a class="btn btn-dark mx-2 my-2 p-2" href="{{ path('produit_delete', {'id': produit.id}) }}">Supprimer</a>
+                            </td>
+                          </tr>
+                        {% else %}
+                          <tr>
+                            <td colspan="6">Aucun produits trouvé</td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fin liste des produits -->
+
+            <!-- Début liste des utilisateurs -->
             <div class="col-12">
               <div class="card recent-sales overflow-auto">
 
@@ -156,19 +252,10 @@
                                     <td scope="row">{{ user.username }}</td>
                                     <td scope="row">{{ user.email }}</td>
                                     <td scope="row">{{ user.roles ? user.roles|json_encode : '' }}</td>
-                                    <td scope="row">
-                                        <a href="{{ path('user_show', {'id': user.id}) }}" class="mx-3">
-                                            <i class="fas fa-eye"></i>
-                                            Voir
-                                        </a>
-                                        <a href="{{ path('user_edit', {'id': user.id}) }}" class="mx-2">
-                                            <i class="fas fa-user-edit"></i>
-                                            Modifier
-                                        </a>
-                                        <a href="{{ path('user_delete', {'id': user.id}) }}">
-                                            <i class="fas fa-user-slash"></i>
-                                            Supprimer
-                                        </a>
+                                    <td scope="row" class="d-flex flex-column">
+                                        <a href="{{ path('user_show', {'id': user.id}) }}" class="btn btn-dark mx-2 my-2">Voir</a>
+                                        <a href="{{ path('user_edit', {'id': user.id}) }}" class="btn btn-dark mx-2 my-2">Modifier</a>
+                                        <a href="{{ path('user_delete', {'id': user.id}) }}" class="btn btn-dark mx-2 my-2">Supprimer</a>
                                     </td>
                                 </tr>
                             {% else %}
@@ -181,68 +268,7 @@
 				    <a class="btn btn-dark" href="{{ path('user_new') }}">Ajouter un utilisateur</a>
                 </div>
               </div>
-            </div><!-- End Recent Sales -->
-
-            <!-- Top Selling -->
-            <div class="col-12">
-              <div class="card top-selling overflow-auto">
-
-                <div class="card-body pb-0">
-                  <h5 class="card-title">Produits</h5>
-
-                  <table class="table table-borderless">
-                    <thead>
-                      <tr>
-                        <th scope="col">Preview</th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Price</th>
-                        <th scope="col">Sold</th>
-                        <th scope="col">Revenue</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-1.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Ut inventore ipsa voluptas nulla</a></td>
-                        <td>$64</td>
-                        <td class="fw-bold">124</td>
-                        <td>$5,828</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-2.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Exercitationem similique doloremque</a></td>
-                        <td>$46</td>
-                        <td class="fw-bold">98</td>
-                        <td>$4,508</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-3.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Doloribus nisi exercitationem</a></td>
-                        <td>$59</td>
-                        <td class="fw-bold">74</td>
-                        <td>$4,366</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-4.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Officiis quaerat sint rerum error</a></td>
-                        <td>$32</td>
-                        <td class="fw-bold">63</td>
-                        <td>$2,016</td>
-                      </tr>
-                      <tr>
-                        <th scope="row"><a href="#"><img src="assets/img/product-5.jpg" alt=""></a></th>
-                        <td><a href="#" class="text-primary fw-bold">Sit unde debitis delectus repellendus</a></td>
-                        <td>$79</td>
-                        <td class="fw-bold">41</td>
-                        <td>$3,239</td>
-                      </tr>
-                    </tbody>
-                  </table>
-
-                </div>
-
-              </div>
-            </div><!-- End Top Selling -->
+            </div><!-- Fin liste des utilisateurs -->
 
           </div>
         </div><!-- End Left side columns -->

@@ -1,0 +1,7 @@
+<form action="{{ path('commande_termine') }}" method="post">
+    {% for commande in commande %}
+        <input type="checkbox" name="commande_ids[]" value="{{ commande.id }}" />
+        {{ commande.nomClient }} <!-- Affichez les détails de la commande comme vous le souhaitez -->
+    {% endfor %}
+    <button type="submit">Marquer comme terminé</button>
+</form>

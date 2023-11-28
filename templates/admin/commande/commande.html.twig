@@ -10,7 +10,7 @@
 <body>
 	<div class="main" id="main">
 		<div class="section">
-			<div class="col col-lg-12">
+			<div class="col col-lg">
 				<div class="card">
 					<div class="card-body">
 						<div class="row">
@@ -23,27 +23,69 @@
 									<th scope="col">Nom du client</th>
 									<th scope="col">Adresse mail</th>
 									<th scope="col">Numéro de Tél</th>
-									<th scope="col">Nom du pain</th>
-									<th scope="col">Quantité</th>
+									<th scope="col">Le Campagne</th>
+									<th scope="col">Le Blé pop</th>
+									<th scope="col">le Kalamata</th>
 									<th scope="col">Statut</th>
 									<th scope="col">Date</th>
 								</tr>
 							</thead>
 							<tbody>
-								{% for commande in commande %}
+								{% for commande in commandes %}
 									<tr>
 										<td scope="row">{{ commande.id }}</td>
 										<td scope="row">{{ commande.nomClient }}</td>
 										<td scope="row">{{ commande.emailClient }}</td>
 										<td scope="row">{{ commande.telephoneClient }}</td>
-										<td scope="row">{{ commande.detailCommande.produit.nomProduit }}</td>
-										<td scope="row">{{ commande.quantite }}</td>
+										
+										<td class="text-center">
+											{% set quantity = 0 %}
+											{% for detailCommande in detailsCommandes[commande.id] %}
+												{% if detailCommande.produit.id == 1 %}
+													{% set quantity = detailCommande.quantite %}
+												{% endif %}
+											{% endfor %}
+											{% if quantity is null %}
+												0
+											{% else %}
+												{{ quantity }}
+											{% endif %}
+										</td>
+										<td class="text-center">
+											{% set quantity = 0 %}
+											{% for detailCommande in detailsCommandes[commande.id] %}
+												{% if detailCommande.produit.id == 2 %}
+													{% set quantity = detailCommande.quantite %}
+												{% endif %}
+											{% endfor %}
+											{% if quantity is null %}
+												0
+											{% else %}
+												{{ quantity }}
+											{% endif %}
+										</td>
+										<td class="text-center">
+											{% set quantity = 0 %}
+											{% for detailCommande in detailsCommandes[commande.id] %}
+												{% if detailCommande.produit.id == 3 %}
+													{% set quantity = detailCommande.quantite %}
+												{% endif %}
+											{% endfor %}
+											{% if quantity is null %}
+												0
+											{% else %}
+												{{ quantity }}
+											{% endif %}
+										</td>
+										<!-- <td scope="row">quantite[0]</td>
+										<td scope="row">quantite[1]</td>
+										<td scope="row">quantite[2]</td> -->
 										<td scope="row">{{ commande.statut }}</td>
                                         <td scope="row">{{ commande.dateCommande | date("d/m/Y") }}</td>
 									</tr>
 								{% else %}
 									<tr>
-										<td colspan="12">Aucune réservation en cours</td>
+										<td colspan="12">Aucune réservation</td>
 									</tr>
 								{% endfor %}
 							</tbody>
