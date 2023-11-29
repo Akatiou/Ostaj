@@ -2,25 +2,28 @@
 
 {% block title %}OSTAJ - ajouter un utilisateur{% endblock %}
 
-{% block stylesheets %}
+{% block stylesheets %}{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard/dashboard.css') }}">
 {% endblock %}
 
 {% block body %}
 
 <body>
 	<div class="main" id="main">
-		<div class="container border shadow col-8 mb-2">
-		<div class="alert">
+		<div class=" section row justify-content-center">
+		<div class="alert alert-success border shadow col-lg-10">
 			<h1>Créez un nouvel utilisateur</h1>
 			<div>
 				{{ form_start(form) }}
-				{{ form_widget(form) }}
-				<button class="btn btn-success my-2 mx-2">{{ button_label|default('Sauvegarder') }}</button>
+				{{ form_widget(form, {'attr': {'class': 'form-success'}} ) }}
+				<button class="btn btn-outline-success my-2 mt-3">{{ button_label|default('Sauvegarder') }}</button>
 				{{ form_end(form) }}
 			</div>
-			<a class="btn btn-dark my-2 mx-2" href="{{ path('user_index') }}">Retour</a>
+			<a class="btn btn-utilisateur align-center" href="{{ path('user_index') }}">Retour</a>
 		</div>
-	</div>
+		</div>
 	</div>
 </body>
 {% endblock %}

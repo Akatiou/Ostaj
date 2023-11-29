@@ -44,7 +44,6 @@ class CommandeController extends AbstractController
         return $this->render('admin/commande/commande.html.twig', [
             'controller_name' => 'CommandeController',
             'commandes' => $commandes,
-            // 'detailCommande' => $detailCommandeRepository->findAll(),
             'produits' => $produitRepository->findAll(),
             'detailsCommandes' => $detailsCommandes,
         ]);
@@ -59,8 +58,16 @@ class CommandeController extends AbstractController
      * @param Commande $commande
      * @return Response
      */
-    public function show_commande(Commande $commande, ProduitRepository $produitRepository, DetailCommandeRepository $detailCommandeRepository): Response
+    public function show_commande($id, CommandeRepository $commandeRepository, ProduitRepository $produitRepository, DetailCommandeRepository $detailCommandeRepository): Response
     {
+        $commande = $commandeRepository->findOneBy([
+            'id' => $id
+        ]);
+
+        if (!$commande) {
+            throw $this->createNotFoundException("La commande demandé n'existe pas");
+        }
+
         return $this->render('admin/commande/show.html.twig', [
             'commande' => $commande,
             'produit' => $produitRepository->findAll(),

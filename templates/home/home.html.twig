@@ -5,7 +5,8 @@
 {% block stylesheets %}{% endblock %}
 
 {% block css %}
-<link rel="stylesheet" type="text/css" href="{{ asset('css/home/home.css') }}">{% endblock %}
+<link rel="stylesheet" type="text/css" href="{{ asset('css/home/home.css') }}">
+{% endblock %}
 
 {% block body %}
 
@@ -63,21 +64,21 @@
                         <div class="address">
                             <i class="icofont-google-map"></i>
                             <h4>Adresse:</h4>
-                            <p>RUE ? , 93100 Montreuil</p>
+                            <p>8 rue Désiré Charton, 93100 Montreuil</p>
                         </div>
 
-                        <div class="email">
+                        <!-- <div class="email">
                             <i class="icofont-envelope"></i>
                             <h4>Email:</h4>
                             <p>adresse email ?</p>
-                        </div>
+                        </div> -->
 
                         <div class="phone">
                             <i class="icofont-phone"></i>
                             <h4>Téléphone:</h4>
-                            <p>Phone ?</p>
+                            <p>06 51 29 65 20</p>
                         </div>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.78350062028!2d2.4386534762702707!3d48.86233867133268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47ec7da95eb4280b%3A0x5389433624054c48!2sMairie%20de%20Montreuil!5e0!3m2!1sfr!2sfr!4v1700268867495!5m2!1sfr!2sfr" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.5313570343665!2d2.4481788760570926!3d48.86714630009075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66d4ef21236e9%3A0x1af09451d7386c42!2s8%20Rue%20D%C3%A9sir%C3%A9%20Charton%2C%2093100%20Montreuil!5e0!3m2!1sfr!2sfr!4v1701300502307!5m2!1sfr!2sfr" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
                     </div>
 
                 </div>
@@ -102,17 +103,17 @@
                             <div id="detailCommande" data-prototype="{{ form_widget(form.detailCommande.vars.prototype)|e('html_attr') }}">
                                 {% for produitForm in form.detailCommande %}
                                     <div class="produit-quantite">
-                                        {{ form_row(produitForm.produit, {'attr': {'class': 'produit'}}) }}
+                                        {{ form_row(produitForm.produit, {'attr': {'class': 'produit', 'placehorder' : 'Sélectionner un produit'}}) }}
                                         {{ form_row(produitForm.quantite) }}
                                     </div>
                                 {% endfor %}
                             </div>
-                            <a href="#" class="add_produit_link" style="color: #1395A7">Ajouter un produit</a>
+                            <a href="#" class="add_produit_link">Ajouter un produit</a>
                         </div>
                         <div class="form-group col-md-6">
                             <small id="emailHelp" class="form-text text-muted">*Vos données restent confidentielles</small>
                         </div>
-                        <div class="text-center"><button class="btn my-2 mx-2" style="background-color : #1395A7; color: white">{{ button_label|default('Réserver') }}</button></div>
+                        <div class="text-center"><button class="btn btn-primary my-2 mx-2">{{ button_label|default('Réserver') }}</button></div>
                     {{ form_end(form) }}
                     </div>
                 </div>

@@ -2,20 +2,34 @@
 
 {% block title %}OSTAJ - Modifier un produit{% endblock %}
 
-{% block stylesheets %}
+{% block stylesheets %}{% endblock %}
+
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard/dashboard.css') }}">
 {% endblock %}
 
 {% block body %}
 
 <body>
 	<div class="main" id="main">
-		<div class="container border shadow col-8 mb-2">
-		<div class="alert">
-			<h1>Modifier un nouveau produit</h1>
-			
-			<a class="btn btn-dark my-2 mx-2" href="{{ path('produit_index') }}">Retour</a>
+	<div class="section row justify-content-center">
+		<div class="border shadow alert alert-info col-lg-10">
+		<h1 class="text-center">Modifier le produit : {{ produit.nomProduit }}</h1>
+
+		{{ form_start(formView) }}
+		{{ form_widget(formView) }}
+
+		<div class="row pt-3 m-auto">
+			<button class="btn btn-outline-success my-2">{{ button_label|default('Sauvegarder') }}</button>
+		</div>
+
+		{{ form_end(formView) }}
+
+		<div class="row m-auto">
+			<a class="btn btn-produit my-2" href="{{ path('produit_index') }}">Retour</a>
 		</div>
 	</div>
 	</div>
+</div>
 </body>
 {% endblock %}

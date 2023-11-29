@@ -1,8 +1,10 @@
 {% extends 'admin/shared/admin_base.html.twig' %}
 {% block title %}OSTAJ - Les Réservations{% endblock %}
 
-{% block stylesheets %}
+{% block stylesheets %}{% endblock %}
 
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard/dashboard.css') }}">
 {% endblock %}
 
 {% block body %}
@@ -10,110 +12,96 @@
 <body>
 	<div class="main" id="main">
 		<div class="section">
-			<div class="col col-lg">
-
-				{% for label,messages in app.flashes %}
-					<div class="container text-center my-5">
-						<div class="alert alert-success {{ label }}">
-							{% for message in messages %}
-								<p>{{message | raw }}</p>
-							{% endfor %}
-						</div>
-					</div>
-				{% endfor %}
-
-				<div class="card">
+			<div class="col col-lg tableau-commande">
+				<div class="alert alert-warning">
 					<div class="card-body">
 						<div class="row">
 							<h1 class="col-sm card-title m-2">Réservations en cours :</h1>
 						</div>
-						<table class="table table-hover text-center">
-							<thead>
-								<tr>
-									<th scope="col">Numéro de réservation</th>
-									<th scope="col">Nom du client</th>
-									<th scope="col">Adresse mail</th>
-									<th scope="col">Numéro de Tél</th>
-									<th scope="col">Le Campagne</th>
-									<th scope="col">Le Blé pop</th>
-									<th scope="col">le Kalamata</th>
-									<th scope="col">Statut</th>
-									<th scope="col">Date</th>
-									<th class="col-1">
-										<label for="select_all">Tout sélectionner</label>
-										<input type="checkbox" id="select_all">
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<form action="{{ path('commande_termine') }}" method="post">
-										{% for commande in commandes %}
-											{% if commande.statut == 'EN COURS' %}
-												<tr>
-													<td scope="row">{{ commande.id }}</td>
-													<td scope="row">{{ commande.nomClient }}</td>
-													<td scope="row">{{ commande.emailClient }}</td>
-													<td scope="row">{{ commande.telephoneClient }}</td>
-													<td class="text-center">
-														{% set quantity = 0 %}
-														{% for detailCommande in detailsCommandes[commande.id] %}
-															{% if detailCommande.produit.id == 1 %}
-																{% set quantity = detailCommande.quantite %}
-															{% endif %}
-														{% endfor %}
-														{% if quantity is null %}
-															0
-														{% else %}
-															{{ quantity }}
-														{% endif %}
-													</td>
-													<td class="text-center">
-														{% set quantity = 0 %}
-														{% for detailCommande in detailsCommandes[commande.id] %}
-															{% if detailCommande.produit.id == 2 %}
-																{% set quantity = detailCommande.quantite %}
-															{% endif %}
-														{% endfor %}
-														{% if quantity is null %}
-															0
-														{% else %}
-															{{ quantity }}
-														{% endif %}
-													</td>
-													<td class="text-center">
-														{% set quantity = 0 %}
-														{% for detailCommande in detailsCommandes[commande.id] %}
-															{% if detailCommande.produit.id == 3 %}
-																{% set quantity = detailCommande.quantite %}
-															{% endif %}
-														{% endfor %}
-														{% if quantity is null %}
-															0
-														{% else %}
-															{{ quantity }}
-														{% endif %}
-													</td>
-													<td scope="row">{{ commande.statut }}</td>
-													<td scope="row">{{ commande.dateCommande | date("d/m/Y") }}</td>
-													<td scope="row">
-														<input type="checkbox" name="commande_id[]" value="{{ commande.id }}" />
-													</td>
-												</tr>
-											{% endif %}
-										{% else %}
-											<tr>
-												<td colspan="12">Aucune réservation en cours</td>								
-											</tr>
-										{% endfor %}
+						<form action="{{ path('commande_termine') }}" method="post">
+							<table class="table table-warning text-center">
+								<thead>
 									<tr>
-										<td colspan="9"></td> <!-- Cellules vides pour aligner le bouton -->
-										<td colspan="2">
-											<button class="btn btn-dark" type="submit">Marquer toutes les commandes sélectionnées comme terminées</button>
-										</td>
+										<th scope="col">Numéro de réservation</th>
+										<th scope="col">Nom du client</th>
+										<th scope="col">Adresse mail</th>
+										<th scope="col">Numéro de Tél</th>
+										<th scope="col">Le Campagne</th>
+										<th scope="col">Le Blé pop</th>
+										<th scope="col">le Kalamata</th>
+										<th scope="col">Statut</th>
+										<th scope="col">Date</th>
+										<th class="col-1">
+											<label for="select_all">Tout sélectionner</label>
+											<input type="checkbox" id="select_all">
+										</th>
 									</tr>
-								</form>
-							</tbody>
-						</table>
+								</thead>
+								<tbody>
+									{% for commande in commandes %}
+										{% if commande.statut == 'EN COURS' %}
+											<tr>
+												<td scope="row">{{ commande.id }}</td>
+												<td scope="row">{{ commande.nomClient }}</td>
+												<td scope="row">{{ commande.emailClient }}</td>
+												<td scope="row">{{ commande.telephoneClient }}</td>
+												<td class="text-center">
+													{% set quantity = 0 %}
+													{% for detailCommande in detailsCommandes[commande.id] %}
+														{% if detailCommande.produit.id == 1 %}
+															{% set quantity = detailCommande.quantite %}
+														{% endif %}
+													{% endfor %}
+													{% if quantity is null %}
+														0
+													{% else %}
+														{{ quantity }}
+													{% endif %}
+												</td>
+												<td class="text-center">
+													{% set quantity = 0 %}
+													{% for detailCommande in detailsCommandes[commande.id] %}
+														{% if detailCommande.produit.id == 2 %}
+															{% set quantity = detailCommande.quantite %}
+														{% endif %}
+													{% endfor %}
+													{% if quantity is null %}
+														0
+													{% else %}
+														{{ quantity }}
+													{% endif %}
+												</td>
+												<td class="text-center">
+													{% set quantity = 0 %}
+													{% for detailCommande in detailsCommandes[commande.id] %}
+														{% if detailCommande.produit.id == 3 %}
+															{% set quantity = detailCommande.quantite %}
+														{% endif %}
+													{% endfor %}
+													{% if quantity is null %}
+														0
+													{% else %}
+														{{ quantity }}
+													{% endif %}
+												</td>
+												<td scope="row">{{ commande.statut }}</td>
+												<td scope="row">{{ commande.dateCommande | date("d/m/Y") }}</td>
+												<td scope="row">
+													<input type="checkbox" name="commande_id[]" value="{{ commande.id }}" />
+												</td>
+											</tr>
+										{% endif %}
+									{% else %}
+										<tr>
+											<td colspan="12">Aucune réservation en cours</td>								
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+							<div class="d-flex justify-content-end">
+							<button class="btn btn-commande" type="submit">Marquer toutes les commandes sélectionnées comme terminées</button>
+							</div>
+						</form>
 					</div>
 				</div>
 			</div>

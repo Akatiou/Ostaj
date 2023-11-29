@@ -2,21 +2,23 @@
 
 {% block title %}OSTAJ - ajouter un produit{% endblock %}
 
-{% block stylesheets %}
+{% block stylesheets %}{% endblock %}
+
+{% block css %}
+  <link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard/dashboard.css') }}">
 {% endblock %}
 
 {% block body %}
 
 <body>
 	<div class="main" id="main">
-		<div class="section">
-            <div class="col col-lg-6">
-                <div class="card">
+		<div class="section row justify-content-center">
+            <div class="border shadow alert alert-info col col-lg-10">
                     <div class="card-body">
                         <div class="row">
                             <h1 class="text-center">{{produit.nomProduit}}</h1>
                         </div>
-                        <table class="table table-light text-center">
+                        <table class="table table-info text-center">
                             <tbody>
                                 <tr>
                                     <th scope="col-2">Produit ajouté le</th>
@@ -30,18 +32,20 @@
                                     <th scope="col-2">Descrition</th>
                                     <td scope="row">{{ produit.descriptionProduit | raw }}</td>
                                 </tr>
-                                <tr>
-                                    <th scope="col-2">Action</th>
-                                    <td></td>
-                                </tr>
                             </tbody>
 		                </table>
                     </div>
-                    <a class="btn btn-dark my-2 mx-2" href="{{ path('produit_index') }}">Retour</a>
-			        <a class="btn btn-info my-2 mx-2" href="{{ path('produit_edit', {'id': produit.id}) }}">Modifier</a>
+                    <div class="row p-5">
+                        <a class="btn btn-produit my-2" href="{{ path('produit_index') }}">Retour</a>
+                        <a class="btn btn-outline-success my-2" href="{{ path('produit_edit', {'id': produit.id}) }}">Modifier</a>
+                        <form class="row m-auto p-0 my-2" method="post" action="{{ path('produit_delete', {'id': produit.id}) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer ce produit ?');">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ produit.id) }}">
+                            <button class="btn btn-outline-danger">Supprimer</button>
+                        </form>
+                    </div>
 
-                    {{ include('admin/produit/_delete_form.html.twig') }}
-                </div>
+                    <!-- {{ include('admin/produit/_delete_form.html.twig') }} -->
             </div>
         </div>
 	</div>

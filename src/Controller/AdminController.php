@@ -107,8 +107,16 @@ class AdminController extends AbstractController
      * @param User $user
      * @return Response
      */
-    public function show_user(User $user): Response
+    public function show_user($id, UserRepository $userRepository): Response
     {
+        $user = $userRepository->findOneBy([
+            'id' => $id
+        ]);
+
+        if (!$user) {
+            throw $this->createNotFoundException("L'utilisateur demandé n'existe pas");
+        }
+
         return $this->render('admin/user/show.html.twig', [
             'user' => $user,
         ]);
@@ -130,11 +138,15 @@ class AdminController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            // $entityManager = $this->getDoctrine()->getManager();
+            $data = $form->getData();
+
+            $user->setUsername($data->getusername());
 
             $entityManager->persist($user);
 
             $entityManager->flush();
+
+            $this->addFlash('success', "L'utilisateur' :  {$data->getusername()} a bien été ajouté !");
 
             return $this->redirectToRoute('user_index');
         }
@@ -152,13 +164,22 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/user/{id}/edit", name="user_edit", methods={"GET","POST"})
      */
-    public function edit_user(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function edit_user($id, Request $request, UserRepository $userRepository, EntityManagerInterface $entityManager): Response
     {
+        $user = $userRepository->find($id);
+
         $form = $this->createForm(UserType::class, $user);
+
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $data = $form->getData();
+
+            $user->setUsername($data->getusername());
+
             $entityManager->flush();
+
+            $this->addFlash('success', "L'utilisateur' :  {$data->getusername()} a bien été modifié !");
 
             return $this->redirectToRoute('user_index');
         }
@@ -176,14 +197,23 @@ class AdminController extends AbstractController
     /**
      * @Route("/admin/user/{id}", name="user_delete", methods={"DELETE"})
      */
-    public function delete_user(Request $request, User $user, EntityManagerInterface $entityManager): Response
+    public function delete_roduit($id, EntityManagerInterface $entityManager)
     {
-        if ($this->isCsrfTokenValid('delete' . $user->getId(), $request->request->get('_token'))) {
-            // $entityManager = $this->getDoctrine()->getManager();
-            $entityManager->remove($user);
-            $entityManager->flush();
+        // Récupérer le repository de l'entité Produit
+        $userRepository = $entityManager->getRepository(User::class);
+
+        // Récupérer le produit à supprimer en utilisant son ID
+        $user = $userRepository->find($id);
+
+        if (!$user) {
+            throw $this->createNotFoundException('Aucun utilisateur correspondant à cet id : ' . $id . ' n\'a été trouvé.');
         }
 
+        // Supprimer le produit
+        $entityManager->remove($user);
+        $entityManager->flush();
+
+        $this->addFlash('success', 'L\'utilisateur a bien été supprimé.');
         return $this->redirectToRoute('user_index');
     }
 }

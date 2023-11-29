@@ -16,7 +16,7 @@
                         <div class="row">
                             <h1 class="text-center">Commande n° {{ commande.id }} de {{commande.nomClient}}</h1>
                         </div>
-                        <p>{{ numeroClient }}</p>
+                        <p>{{ commande.telephoneClient }}</p>
                         <table class="table table-light text-center">
                             <tbody>
                                 <tr>
@@ -25,7 +25,7 @@
                                 </tr>
                                 <tr>
                                     <th scope="col-2">Détail de la commande : </th>
-                                    <td scope="row">{{ commande.detailCommande }}</td>
+                                    <td scope="row">{{ detailCommande.quantite }}</td>
                                 </tr>
                                 <tr>
                                     <th scope="col-2">Descrition</th>

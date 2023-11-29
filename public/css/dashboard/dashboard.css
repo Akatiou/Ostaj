@@ -1,0 +1,99 @@
+/* ****************************************************************************
+                Style dashboard
+******************************************************************************/
+
+
+/*---------------------generale---------------*/
+
+.card-icon {
+    border: 1px solid;
+}
+
+h5,
+h6 {
+    font-weight: bold;
+}
+
+
+/*--------------------Reservation--------------*/
+
+.info-reservation {
+    color: #664d03;
+}
+
+
+/*Reservation en cour*/
+
+.tableau-commande h1,
+.tableau-commande h5 {
+    color: #664d03;
+    font-weight: bold;
+}
+
+.titre-commande {
+    font-weight: bold;
+}
+
+
+/* .tableau-commande thead th {
+    color: #664d03;
+} */
+
+.btn-commande {
+    color: #664d03;
+    border: 1px solid #664d03;
+}
+
+.btn-commande:hover {
+    background-color: #664d03;
+    color: white;
+    border: 1px solid #664d03;
+}
+
+
+/*--------------------Produit--------------*/
+
+.info-produit {
+    color: #052c65;
+}
+
+.nombre-produit-reserv-encours {
+    color: #58151c;
+}
+
+.btn-produit {
+    color: #052c65;
+    border: 1px solid #052c65;
+}
+
+.btn-produit:hover {
+    border: 1px solid #052c65;
+    background-color: #052c65;
+    color: white;
+}
+
+
+/*--------------------Utilisateur--------------*/
+
+.info-utilisateur {
+    color: #0a3622;
+}
+
+.tableau-utilisateur h1,
+.tableau-utilisateur h5 {
+    color: #0a3622;
+}
+
+.btn-utilisateur {
+    color: #0a3622;
+    border: 1px solid #0a3622;
+}
+
+.btn-utilisateur:hover {
+    background-color: #0a3622;
+    color: white;
+    border: 1px solid #0a3622;
+}
+
+
+/*--------------------Commandes en cours--------------*/

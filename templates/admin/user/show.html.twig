@@ -4,16 +4,19 @@
 
 {% block stylesheets %}{% endblock %}
 
+{% block css %}
+	<link rel="stylesheet" type="text/css" href="{{ asset('css/dashboard/dashboard.css') }}">
+{% endblock %}
+
 {% block body %}
 
-{% include "admin/shared/admin_navbar.html.twig" %}
 
 <body>
 	<div class="main" id="main">
-		<div class="container">
-		<h1 class="text-center">{{ user.username }}</h1>
+		<div class="alert alert-success border shadow">
+			<h1 class="text-center">{{ user.username }}</h1>
 
-			<table class="table container border shadow col-8">
+			<table class="table table-success container  col-8">
 				<tbody>
 					<tr>
 						<th>Id</th>
@@ -37,12 +40,16 @@
 					</tr>
 				</tbody>
 			</table>
-			<div class="d-flex justify-content-center m-2">
-				<a class="btn btn-warning my-2 mx-2" href="{{ path('user_index') }}">Retour</a>
+			<div class="row justify-content-center m-2">
+				<a class="btn btn-utilisateur my-2 mx-2" href="{{ path('user_index') }}">Retour</a>
 
-				<a class="btn btn-success my-2 mx-2" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
+				<a class="btn btn-outline-success my-2 mx-2" href="{{ path('user_edit', {'id': user.id}) }}">Modifier</a>
 
-				{{ include('admin/user/_delete_form.html.twig') }}
+				<form class="row m-auto p-0 my-2" method="post" action="{{ path('user_delete', {'id': user.id}) }}" onsubmit="return confirm('Etes vous sur de vouloir supprimer cet utilisateur ?');">
+					<input type="hidden" name="_method" value="DELETE">
+					<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ user.id) }}">
+					<button class="btn btn-outline-danger">Supprimer</button>
+				</form>
 			</div>
 		</div>
 	</div>
