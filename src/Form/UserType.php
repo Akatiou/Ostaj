@@ -8,26 +8,34 @@ use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 
 class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('username', TextType::class, [
-                'label' => 'Pseudo',
-                'attr' => ['placeholder' => 'Tapez le pseudo']
+            ->add('fullName', TextType::class, [
+                'label' => 'Nom et prénom',
+                'attr' => ['placeholder' => 'Tapez le nom et le prénom...']
             ])
             ->add('email', EmailType::class, [
                 'label' => 'Adresse Email',
-                'attr' => ['placeholder' => 'Entrez l\'adresse mail']
+                'attr' => ['placeholder' => 'Entrez l\'adresse mail...']
             ])
             ->add('password', PasswordType::class, [
                 'label' => 'Mot de passe',
-                'attr' => ['placeholder' => 'Tapez un mot de passe']
+                'attr' => ['placeholder' => 'Tapez un mot de passe...']
             ]);
+        // ->add('roles', ChoiceType::class, [
+        //     'label' => 'Rôles',
+        //     'choices' => [
+        //         'ROLE_USER' => 'ROLE_USER',
+        //         'ROLE_ADMIN' => 'ROLE_ADMIN',
+        //     ],
+        //     'multiple' => false
+        // ]);
         // ->add('roles');
     }
 

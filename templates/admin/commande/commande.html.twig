@@ -35,7 +35,7 @@
 							<tbody>
 								{% for commande in commandes %}
 									<tr>
-										<td scope="row"><a href="{{ path('commande_show', {'id': commande.id}) }}">{{ commande.id }}</a></td>
+										<td scope="row">{{ commande.id }}</td>
 										<td scope="row">{{ commande.nomClient }}</td>
 										<td scope="row">{{ commande.emailClient }}</td>
 										<td scope="row">{{ commande.telephoneClient }}</td>

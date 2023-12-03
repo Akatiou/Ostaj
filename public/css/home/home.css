@@ -56,3 +56,23 @@
     max-width: 800px;
     line-height: 36px;
 }
+
+#hero p {
+    margin-bottom: 10px;
+}
+
+.hero-container .card-icon {
+    border: 3px solid white;
+    color: white;
+    font-size: 32px;
+    line-height: 0;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.card-icon:hover {
+    background-color: white;
+    color: #006adc;
+}

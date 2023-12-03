@@ -35,7 +35,7 @@
 								{% for user in users %}
 									<tr>
 										<td scope="row">{{ user.id }}</td>
-										<td scope="row">{{ user.username }}</td>
+										<td scope="row">{{ user.fullName }}</td>
 										<td scope="row">{{ user.email }}</td>
 										<td scope="row">{{ user.roles ? user.roles|json_encode : '' }}</td>
 										<td scope="row">

@@ -14,7 +14,7 @@
 <body>
 	<div class="main" id="main">
 		<div class="alert alert-success border shadow">
-			<h1 class="text-center">{{ user.username }}</h1>
+			<h1 class="text-center">{{ user.fullName }}</h1>
 
 			<table class="table table-success container  col-8">
 				<tbody>
@@ -35,8 +35,8 @@
 						<td>{{ user.password }}</td>
 					</tr>
 					<tr>
-						<th>Username</th>
-						<td>{{ user.username }}</td>
+						<th>Nom et prénom</th>
+						<td>{{ user.fullName }}</td>
 					</tr>
 				</tbody>
 			</table>

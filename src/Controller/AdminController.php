@@ -3,10 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Entity\Commande;
 use App\Form\UserType;
 use App\Entity\Produit;
+use App\Entity\Commande;
 
+use App\Entity\DetailCommande;
 use App\Repository\UserRepository;
 use App\Repository\ProduitRepository;
 use App\Repository\CommandeRepository;
@@ -15,7 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use App\Entity\DetailCommande;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 class AdminController extends AbstractController
 {
@@ -49,16 +50,20 @@ class AdminController extends AbstractController
             $detailsCommandes[$commandeId] = $detailCommandes;
 
             foreach ($detailCommandes as $detailCommande) {
-                $produitId = $detailCommande->getProduit()->getId();
-                $quantite = $detailCommande->getQuantite();
 
-                // Si le produit n'a pas encore de somme, l'initialiser à 0
-                if (!isset($sumsByProduct[$produitId])) {
-                    $sumsByProduct[$produitId] = 0;
+                // Vérifier si la commande est en cours
+                if ($commande->getStatut() === Commande::STATUS_ENCOURS) {
+                    $produitId = $detailCommande->getProduit()->getId();
+                    $quantite = $detailCommande->getQuantite();
+
+                    // Si le produit n'a pas encore de somme, l'initialiser à 0
+                    if (!isset($sumsByProduct[$produitId])) {
+                        $sumsByProduct[$produitId] = 0;
+                    }
+
+                    // Ajouter la quantité du produit à la somme
+                    $sumsByProduct[$produitId] += $quantite;
                 }
-
-                // Ajouter la quantité du produit à la somme
-                $sumsByProduct[$produitId] += $quantite;
             }
 
             // Vérifier si la commande est en cours et incrémenter le compteur
@@ -126,6 +131,13 @@ class AdminController extends AbstractController
     //   Ajout d'un user
     //---------------------------------------------------
 
+    private $passwordHasher;
+
+    public function __construct(UserPasswordHasherInterface $passwordHasher)
+    {
+        $this->passwordHasher = $passwordHasher;
+    }
+
     /**
      * @Route("/admin/user/new", name="user_new", methods={"GET","POST"})
      */
@@ -140,13 +152,15 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
-            $user->setUsername($data->getusername());
+            $user->setFullName($data->getfullName());
+
+            $user->setPassword($this->passwordHasher->hashPassword($user, $user->getPassword()));
 
             $entityManager->persist($user);
 
             $entityManager->flush();
 
-            $this->addFlash('success', "L'utilisateur' :  {$data->getusername()} a bien été ajouté !");
+            $this->addFlash('success', "L'utilisateur' :  {$data->getfullName()} a bien été ajouté !");
 
             return $this->redirectToRoute('user_index');
         }
@@ -175,11 +189,11 @@ class AdminController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
-            $user->setUsername($data->getusername());
+            $user->setFullName($data->getfullName());
 
             $entityManager->flush();
 
-            $this->addFlash('success', "L'utilisateur' :  {$data->getusername()} a bien été modifié !");
+            $this->addFlash('success', "L'utilisateur' :  {$data->getfullName()} a bien été modifié !");
 
             return $this->redirectToRoute('user_index');
         }

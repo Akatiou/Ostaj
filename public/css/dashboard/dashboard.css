@@ -15,6 +15,19 @@ h6 {
 }
 
 
+/*---------------------generale---------------*/
+
+.btn-de-connexion {
+    color: #012970;
+    border: 1px solid #012970;
+}
+
+.btn-de-connexion:hover {
+    background-color: #012970;
+    color: white;
+}
+
+
 /*--------------------Reservation--------------*/
 
 .info-reservation {

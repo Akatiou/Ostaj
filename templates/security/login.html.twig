@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+    <head>
+      <meta charset="utf-8">
+      <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+      <title>OSTAJ - Connexion</title>
+      <meta content="" name="description">
+      <meta content="" name="keywords">
+
+      <!-- Favicons -->
+      <!-- <link href="{{ asset('img/favicon.png') }}" rel="icon"> -->
+
+      <!-- Google Fonts -->
+      <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+     <!-- Vendor CSS Files -->
+        <link href="{{ asset('dash/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('dash/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+        <link href="{{ asset('dash/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('dash/vendor/quill/quill.snow.css') }}" rel="stylesheet">
+        <link href="{{ asset('dash/vendor/quill/quill.bubble.css') }}" rel="stylesheet">
+        <link href="{{ asset('dash/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+        <link href="{{ asset('dash/vendor/simple-datatables/style.css') }}" rel="stylesheet">
+
+
+      <!-- Template Main CSS File -->
+      <link href="{{ asset('dash/style.css') }}" rel="stylesheet" type="text/css">
+      <link href="{{ asset('css/dashboard/dashboard.css') }}" rel="stylesheet" type="text/css">
+
+
+    </head>
+
+
+<div class="main">
+    <!-- ======= Header ======= -->
+    <header id="header" class="header fixed-top d-flex align-items-center">
+
+        <div class="d-flex align-items-center justify-content-between">
+        <a href="{{ ('/Admin') }}" class="logo d-flex align-items-center">
+            <!-- <img src="{{ asset('images/Ostaj.png') }}" alt=""> -->
+            <span class="d-none d-lg-block">On S'Tient Au Jus !</span>
+        </a>
+        <i class="bi bi-list toggle-sidebar-btn"></i>
+        </div>
+        <!-- End Logo -->
+
+        <!-- Bouton de déconnexion -->
+        <nav class="header-nav ms-auto">
+        <ul class="d-flex align-items-center">
+            <li class="nav-item dropdown">
+                <h4 class="pe-3" style="color: #012970;">Déconnexion</h4>
+            </li>
+        <!-- End bouton de déconnexion -->
+        </ul>
+        </nav>
+        <!-- End Icons Navigation -->
+
+    </header><!-- End Header -->
+        <div class="main" id="main">
+            <div class="card shadow p-5 col-md-7">
+
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+
+                <form action="{{ path('security_login') }}" method="post">
+
+                    <h1 class="mb-3" style="color: #012970;">Connectez-vous</h1>
+                    <div class="form-group m-3">
+                        <label for="inputEmail">Email</label>
+                        <input placeholder="Entrez votre adresse email..." type="email" value="{{ last_username }}" name="_username" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                    </div>
+                    <div class="form-group m-3">
+                        <label for="inputPassword">Password</label>
+                        <input placeholder="Votre mot de passe..." type="password" name="_password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                    </div>
+
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
+                    <!-- {#
+                        Uncomment this section and add a remember_me option below your firewall to activate remember me functionality.
+                        See https://symfony.com/doc/current/security/remember_me.html
+
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" name="_remember_me"> Remember me
+                            </label>
+                        </div>
+                    #} -->
+
+                    <button class="btn btn-lg btn-de-connexion m-3" type="submit">
+                        Connexion
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</html>

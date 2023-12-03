@@ -46,9 +46,12 @@
 
             <!-- Bouton de déconnexion -->
             <nav class="header-nav ms-auto">
-            <ul class="d-flex align-items-center">
-                <li class="nav-item dropdown">
-                    <h4 class="pe-3">Déconnexion</h4>
+            <ul class="d-flex align-items-center" style="margin-right: 5px;">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('security_logout') }}">
+                        <i class="h4 bi bi-box-arrow-in-right" style="color: #012970;"></i>
+                        <span class="h4" style="color: #012970;">Déconnexion</span>
+                    </a>
                 </li>
             <!-- End bouton de déconnexion -->
             </ul>
@@ -130,7 +133,7 @@
             </li><!-- End User Page Nav -->
 
             <li class="nav-item">
-            <a class="nav-link collapsed" href="pages-login.html">
+            <a class="nav-link collapsed" href="{{ path('security_logout') }}">
                 <i class="bi bi-box-arrow-in-right"></i>
                 <span>Déconnexion</span>
             </a>
