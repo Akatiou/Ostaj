@@ -14,6 +14,10 @@ h6 {
     font-weight: bold;
 }
 
+table {
+    overflow-x: auto;
+}
+
 
 /*---------------------generale---------------*/
 
