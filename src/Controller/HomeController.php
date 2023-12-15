@@ -71,7 +71,7 @@ class HomeController extends AbstractController
 
             $entityManager->flush();
 
-            $this->addFlash('success', "{$data->getNomClient()}, Votre réservation a bien été enregistrée !");
+            $this->addFlash('success', "Merci {$data->getNomClient()}, Votre réservation a bien été enregistrée !");
 
             // Redirection vers une autre page après la soumission réussie du formulaire
             return $this->redirectToRoute('home');

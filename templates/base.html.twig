@@ -8,8 +8,8 @@
       <meta content="" name="description">
       <meta content="" name="keywords">
 
-      <!-- Favicons -->
-      <!-- <link href="{{ asset('img/favicon.png') }}" rel="icon"> -->
+            <!-- Logo en miniature sur l'onglet -->
+      <link href="{{ asset('images/Ostaj_petit_logo.png') }}" rel="icon" sizes="20x20">
 
       <!-- Google Fonts -->
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -30,22 +30,19 @@
     </head>
 
 
-    <body>
+    <body>      
+        {% block body %}
 
-        <!-- <div class="col col-lg"> -->
-            {% for label, messages in app.flashes %}
-            <div class="container text-center my-5">
-                <div class="alert alert-{{label}} alert-dismissible fade show">
+        {% for label, messages in app.flashes %}
+            <div class="alert alert-{{label}} alert-dismissible fade show">
                 {% for message in messages %}
                     {{message | raw}}
                 {% endfor %}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                </div>
             </div>
-            {% endfor %}
-        </div>
-      
-        {% block body %}{% endblock %}
+        {% endfor %}
+        
+        {% endblock %}
         {% block footer %}{% endblock %}
 
         <!-- Vendor JS Files -->

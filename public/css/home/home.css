@@ -2,68 +2,32 @@
     CSS Home - page d'accueil
 --------------------------------------------------------------------------------*/
 
-.home-container {
-    width: 100%;
+.hero-container {
     display: flex;
-    overflow: hidden;
-    min-height: 100%;
-    align-items: center;
     flex-direction: column;
-}
-
-.home-hero {
-    width: 100%;
-    height: 100%;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding-top: 20px;
-    flex-direction: column;
-    background-image: url(../../images/Ostaj_logo1.png);
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-color: #1395A7;
-}
-
-.home-title {
-    color: rgb(255, 255, 255);
-    /* color: black;  #CBB26A */
-    -webkit-text-fill-color: transparent;
-    width: 100%;
-    font-size: 128px;
-    max-width: 895px;
-    font-weight: 600;
-    line-height: 1;
+    align-content: flex-start;
+    text-align: center;
+    margin-left: 10%;
     text-transform: uppercase;
-    background: linear-gradient(0deg, #16140c 20%, rgba(17, 24, 28, 0) 45%), linear-gradient( 90deg, #4f452a 0%, #CBB26A 33.333%, #1f1b10 50%, #282315 100%);
-    background: linear-gradient(0deg, #11181c 20%, rgba(17, 24, 28, 0) 45%), linear-gradient( 90deg, #0f3058 0%, #006adc 33.333%, #11181c 50%, #11181c 100%);
-    background-size: 300% 100%;
-    background-repeat: no-repeat;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -moz-background-clip: text;
-    -webkit-animation: intro-gradient 1.8s ease backwards;
-    animation: intro-gradient 1.8s ease backwards;
-    -webkit-animation-delay: 0.5s;
-    animation-delay: 0.5s;
 }
 
-.home-description {
-    color: rgb(255, 255, 255);
-    color: white;
-    width: 100%;
-    font-size: 24px;
-    max-width: 800px;
-    line-height: 36px;
+#hero .bouton-resa {
+    position: relative;
+    z-index: 2;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-left: 10%;
 }
 
-#hero p {
-    margin-bottom: 10px;
+#hero a {
+    color: #fff;
 }
 
-.hero-container .card-icon {
-    border: 3px solid white;
-    color: white;
+#hero .card-icon {
+    border: 5px solid #fff;
+    color: #fff;
     font-size: 32px;
     line-height: 0;
     width: 64px;
@@ -72,7 +36,32 @@
     flex-grow: 0;
 }
 
-.card-icon:hover {
+#hero .card-icon:hover {
     background-color: white;
     color: #006adc;
+}
+
+#hero .bouton-resa p {
+    margin-top: 25px;
+    margin-left: 1%;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0;
+}
+
+.card {
+    height: 407px;
+}
+
+.card strong {
+    text-transform: uppercase;
+    color: #173b6c;
+}
+
+.portfolio-links a {
+    font-size: 20px !important;
+}
+
+fieldset {
+    visibility: hidden;
 }

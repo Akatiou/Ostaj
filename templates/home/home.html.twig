@@ -39,12 +39,18 @@
                             <span>Déconnexion</span>
                         </a>
                     </li>
-                    
                 {% endif %}
+                
                 <li class="nav-item active">
                     <a class="nav-link collapsed" href="#hero">
                         <i class="bx bx-home"></i>
                         <span>Accueil</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link collapsed" href="#portfolio">
+                        <i class="bx bx-home"></i>
+                        <span>Produits</span>
                     </a>
                 </li>
                 <li class="nav-item">
@@ -61,29 +67,88 @@
 </header><!-- End Header -->
 
 <!-- ======= Hero Section ======= -->
-<section id="hero" class="d-flex flex-column justify-content-center align-items-center">
-    <!-- <button class="text-center"><a href="#contact">Réservez !</a></button> -->
+ <section id="hero" > <!--class="d-flex flex-column align-content-between align-items-center" -->
+    
+    <!-- <button class="text-center"><a href="#formulaire_de_resa">Réservez !</a></button> -->
     <div class="hero-container" data-aos="fade-in">
         <h1>On S'tient Au Jus !</h1>
-        <p class="d-flex">Réserver votre pain: <span class="typed" data-typed-items="Le Campagne, Le Blé pop, Le Kalamata"></span>
-            <div class="d-flex align-column align-items-center justify-content-center">
-                <a href="#contact">
+        
+    </div>
+    <div class="bouton-resa"> <!-- class="d-flex align-column align-items-end justify-content-center" -->
+                <a href="#formulaire_de_resa">
                     <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
                         <i class="bx bx-down-arrow-alt"></i>
                     </div>
                 </a>
+                <p>Réserver votre pain</p>
             </div>
-        </p>
-        <div>
-            <a href=""><i class="bx bx-down-arrow-alt hi-icon"></i></a>
-        </div>
-        
-        
-
-    </div>
 </section><!-- End Hero -->
 
 <main id="main">
+
+        <!-- ======= Portfolio Section ======= -->
+    <section id="portfolio" class="portfolio section-bg">
+      <div class="container">
+
+        <div class="section-title">
+          <h2>Produits</h2>
+          <p>Retrouver tous les produits, ainsi que leurs spécificités.</p>
+        </div>
+
+        <div class="row" data-aos="fade-up">
+          <div class="col-lg-12 d-flex justify-content-center">
+            <ul id="portfolio-flters">
+              <li data-filter="*" class="filter-active">Tous</li>
+              <li data-filter=".filter-pain">Les pains</li>
+              <!-- <li data-filter=".filter-card">Les jus</li> -->
+              <!-- <li data-filter=".filter-web">Les patisseries</li> -->
+            </ul>
+          </div>
+        </div>
+
+        <div class="row portfolio-container" >
+
+            <div class="card col-lg-4 col-md-6 portfolio-item filter-pain" data-aos="fade-up" data-aos-delay="100">
+                <div class="card-img-to portfolio-wrap">
+                    <img src="{{ asset('/images/pain_de_campagne.jpg') }}" class="img-fluid" alt="photo du pain de campagne">
+                    <div class="portfolio-links">
+                        <a href="#formulaire_de_resa">Réserver</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <p><strong>Le campagne</strong>, fabriqué selon le savoir-faire traditionnel est un pain distingué par sa croûte, la couleur légèrement beige de sa mie et sa saveur quelque peu acide.</p>
+                </div>
+            </div>
+
+            <div class="card col-lg-4 col-md-6 portfolio-item filter-pain" data-aos="fade-up" data-aos-delay="200">
+                <div class="card-img-to portfolio-wrap">
+                    <img src="{{ asset('/images/ble_pop.jpg') }}" class="img-fluid" alt="Photo du pain blé pop">
+                    <div class="portfolio-links">
+                        <a href="#formulaire_de_resa">Réserver</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                <p><strong>Le blé pop</strong> est un pain de couleur grisé qui a des arômes légèrement fruités. Il est parfait en pain de tous les jours.</p>
+                </div>
+            </div>
+
+            <div class="card col-lg-4 col-md-6 portfolio-item filter-pain" data-aos="fade-up" data-aos-delay="300">
+                <div class="card-img-to portfolio-wrap">
+                    <img src="{{ asset('/images/kalamata.jpg') }}" class="img-fluid" alt="Photo du pain blé pop">
+                    <div class="portfolio-links">
+                        <a href="#formulaire_de_resa">Réserver</a>
+                    </div>
+                </div>
+                <div class="card-body">
+                <p><strong>Le Kalamata</strong> est un pain aux olives de Kalamata. Olives originaire de la Grèce, qui se différencie par sa belle couleur violette.</p>
+                </div>
+            </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Portfolio Section -->
+
 
     <!-- ======= Contact Section ======= -->
     <section id="contact" class="contact">
@@ -96,7 +161,7 @@
 
             <div class="row" data-aos="fade-in">
 
-                <div class="col-lg-5 d-flex align-items-stretch">
+                <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-right">
                     <div class="info">
                         <div class="address">
                             <i class="icofont-google-map"></i>
@@ -120,9 +185,9 @@
 
                 </div>
                 
-                <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-                    <div class="info">
-                        <h2>Formulaire de réservation</h2>
+                <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-left">
+                    <div class="info" id="formulaire_de_resa">
+                        <h2 style="color: #173b6c;">Formulaire de réservation</h2>
                         {{ form_start(form) }}
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -169,7 +234,7 @@
 <footer id="footer">
     <div class="container">
         <div class="copyright">
-            &copy; Copyright <strong><span>Aïssata</span></strong>
+            &copy; Copyright <strong><span>On S'Tient Au Jus</span></strong>
         </div>
     </div>
 </footer><!-- End  Footer -->
