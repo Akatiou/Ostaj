@@ -12,289 +12,308 @@
 
 
 
-<!-- ======= Mobile nav toggle button ======= -->
-<button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
+<!--------------------------------------------------------------------------------
+                                    Accueil - 1ère section
+---------------------------------------------------------------------------------->
 
-<!-- ======= Header ======= -->
-<header id="header">
-    <div class="d-flex flex-column">
-
-        <div class="profile">
-            <img src="{{ asset('images/Ostaj.png') }}" alt="" class="img-fluid rounded-circle">
-            <h1 class="text-light"><a href="{{ asset('/') }}">On S'Tient Au Jus !</a></h1>
-        </div>
-
-        <nav class="nav-menu">
-            <ul>
-                {% if app.user %}
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="{{ asset('/admin') }}">
-                            <i class="bx bx-grid"></i>
-                            <span>Dashboard</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link collapsed" href="{{ path('security_logout') }}">
-                            <i class="bx bx-exit"></i>
-                            <span>Déconnexion</span>
-                        </a>
-                    </li>
-                {% endif %}
-                
-                <li class="nav-item active">
-                    <a class="nav-link collapsed" href="#hero">
-                        <i class="bx bx-home"></i>
-                        <span>Accueil</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#portfolio">
-                        <i class="bx bx-home"></i>
-                        <span>Produits</span>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link collapsed" href="#contact">
-                        <i class="bx bx-book-content"></i>
-                        <span>Réservation</span>
-                    </a>
-                </li>
-            </ul>
-        </nav><!-- .nav-menu -->
-        <button type="button" class="mobile-nav-toggle d-xl-none"><i class="icofont-navigation-menu"></i></button>
-
+<section class="home-hero">
+    <div class="home-content">
+        <h1 class="home-title"><span style="text-transform: uppercase;">Ostaj</span>, votre source locale de jus et de smoothies fraichement pressé</h1>
+        <span class="home-description">
+            Chez <span class="home-description" style="text-transform: uppercase;">Ostaj</span>, nous vous assurons des mélanges soigneusement élaborés pour vous offrir une énergie naturelle et un plaisir gustatif authentique.
+        </span>
+        <img alt="une ligne, comme une flèche qui renvoi vers le formulaire de réservation de pain" src="{{ asset('images/line-300w.png') }}" class="home-image" />
     </div>
-</header><!-- End Header -->
-
-<!-- ======= Hero Section ======= -->
- <section id="hero" > <!--class="d-flex flex-column align-content-between align-items-center" -->
-    
-    <!-- <button class="text-center"><a href="#formulaire_de_resa">Réservez !</a></button> -->
-    <div class="hero-container" data-aos="fade-in">
-        <h1>On S'tient Au Jus !</h1>
-        
+    <div class="home-image01">
+        <img src="{{ asset('images/Bouteilles_smoothies_pailles_2.png') }}" class="home-image02" alt="Petites bouteilles en verre remplies de smoothies et jus frais. Deux pailles dans chaque bouteilles de smoothies et jus frai. Ainsi que des fruits frai disposé de manière artistique. Kiwi, framboise, myrtylle, pamplemousse, orange, fruits rouges. jus d'orange. Le tout sur un fond blanc."/>
     </div>
-    <div class="bouton-resa"> <!-- class="d-flex align-column align-items-end justify-content-center" -->
-                <a href="#formulaire_de_resa">
-                    <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="bx bx-down-arrow-alt" style="font-weight: 700;"></i>
-                    </div>
-                </a>
-                <p>Réserver votre pain</p>
+</section>
+
+<!--------------------------------------------------------------------------------
+            Accueil - 2ème section - transitions pour parler su dépot de pain
+---------------------------------------------------------------------------------->
+
+<section class="home-mission">
+    <h2 class="home-text08">
+        Chez <span style="text-transform: uppercase;">Ostaj</span>, on a même le pain chaud du coin ! Profitez de notre service de dépôt de pain, pour le Fournil Éphémère !
+    </h2>
+    <button class="button home-button06">
+        <span class="home-text09"><a href="#formulaire_de_resa">Réserver votre pain</a></span>
+    </button>
+</section>
+
+
+<!--------------------------------------------------------------------------------
+                        Accueil - 3ème section Nos services
+---------------------------------------------------------------------------------->
+
+<section class="home-notes-services" id="les-services">
+    <div class="home-depot-content">
+        <h2 class="home-text18">Découvrez nos différents services</h2>
+        <p class="home-depot-text">
+            Explorez un monde de saveurs chez On S'Tient Au Jus. Jus frais, smoothies exquis, dépôt de pain. Découvrez la fraîcheur à chaque instant !
+        </p>
+        <div class="home-first-services">
+            <div data-aos="fade-right" data-aos-duration="200" class="home-content-services">
+                <h2 class="home-header-services">L'univers gourmand d'<span style="text-transform: uppercase;">On S'Tient Au Jus</span>, où chaque smoothies réveille vos papilles et vous transporte dans une expérience gustative délicieusement rafraîchissante.</h2>
             </div>
-</section><!-- End Hero -->
+            <img src="{{ asset('images/Verres_smoothies.png') }}" data-aos="fade-left" data-aos-duration="100" class="home-image02-services image-notes" alt="Des verres remplies de smoothies et jus frais très colorés, sur un bar en bois. Le tout entouré de fruits frais et feuilles de menthe. Pamplemousse, kiwi, fruits rouges, fraise, pomme, orange."
+            />
+        </div>
+        <div class="home-second-services">
+            <div data-aos="fade-left" data-aos-duration="200" class="home-content01-services">
+                <h2 class="home-header01-services">
+                    Pour votre prochain évènement, on se déplace chez vous !<br>Offrez à vos invités la fraîcheur de nos Smoothies et jus frais !<br>Contactez-nous pour des moments fruités et mémorables.
+                </h2>
+                <button class="button button-style-2 home-register3">
+                <span>Contactez-nous par mail</span>
+                <svg viewBox="0 0 1024 1024" class="home-icon12-services">
+                    <path d="M512 170l342 342-342 342-60-60 238-240h-520v-84h520l-238-240z"></path>
+                </svg>
+            </button>
+            </div>
+            <img src="{{ asset('images/Bar_a_jus.png') }}" data-aos="fade-right" data-aos-duration="100" class="image-notes-services" alt="Un long bar à jus mobile en bois. Sur le bar, il y a plusieurs fruits, orange, pamplemousse, citron, fraise, mangue, banane, ananas. Un bouquet de menthe er de citronelle. Ainsi que plusieurs bocaux de smoothies. Et sur l'ardoise, il y a écrit le nom du bar à jus OSTAJ - On S'Tient Au Jus."
+            />
+        </div>
+        <div class="home-first-services">
+            <div data-aos="fade-right" data-aos-duration="200" class="home-content-services">
+                <h2 class="home-header-services">Emportez la chaleur du pain frais du Fournil éphémère avec notre service de dépôt de pain.<br>Chez <span style="text-transform: uppercase;">On S'Tient Au Jus</span>, la fraîcheur s'étend à chaque bouchée !</h2>
+            </div>
+            <img src="{{ asset('images/pains.png') }}" data-aos="fade-left" data-aos-duration="100" class="home-image02-services image-notes-services" alt="un photoshoot artistique représentant différents type de pains. Le pain de campagne - Le Campagne, Le blé pop, et le Kalamata. Cela représente le service de réservation de pain de OSTAJ - On S'Tient Au Jus"
+            />
+        </div>
+    </div>
+</section>
 
-<main id="main">
+<!--------------------------------------------------------------------------------
+                                    Accueil - 4ème section Dépôt de pains
+---------------------------------------------------------------------------------->
 
-        <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio section-bg">
-      <div class="container">
+<section class="home-depot-de-pain" id="service-depot-de-pain">
+    <div class="home-depot-content">
+        <h2 class="home-text18">Le dépôt de pain</h2>
+        <p class="home-depot-text">
+            Découvrez votre solution pratique de dépôt de pain. La veille, remplissez le formulaire en ligne, choisissez entre <span style="text-decoration: underline;">campagne</span>,
+            <span style="text-decoration: underline;">blé pop</span> et
+            <span style="text-decoration: underline;"> kalamata</span>, puis récupérez votre pain frais dans notre bar à jus. Pas de complications, juste du bon pain à portée de main.
+            <!-- Simplifiez votre quotidien avec notre service de dépôt de pain sans tracas. -->
+        </p>
+        <div class="home-list2">
+            <div class="home-row">
+                <div class="article-article article-root-class-name1">
+                    <img alt="Le pain Campagne, le pain de campagne" src="images/Campagne.png" class="article-image" />
+                    <div class="article-content">
+                        <div class="article-heading">
+                            <h2 class="article-header">
+                                <span>Le Campagne</span>
+                            </h2>
+                            <p class="article-description">
+                                <span>
+                                    Fabriqué selon le savoir-faire traditionnel est un pain distingué par sa croûte, 
+                                    la couleur légèrement beige de sa mie et sa saveur quelque peu acide.
+                                </span>
+                            </p>
+                        </div>
+                        <button class="button-arrow button">
+                            <a href="#formulaire_de_resa" class="article-text">Réserver</a>
+                            <span class="article-text1">&gt;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="article-article article-root-class-name">
+                    <img alt="Le pain blé pop, Le Blé pop" src="images/BlePop.png" class="article-image" />
+                    <div class="article-content">
+                        <div class="article-heading">
+                            <h2 class="article-header">
+                                <span>Le blé pop</span>
+                            </h2>
+                            <p class="article-description">
+                                <span>
+                                    Un pain de couleur grisé qui a des arômes légèrement fruités. 
+                                    Il est parfait en pain de tous les jours.
+                                </span>
+                            </p>
+                        </div>
+                        <button class="button-arrow button">
+                            <a href="#formulaire_de_resa" class="article-text">Réserver</a>
+                            <span class="article-text1">&gt;</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="article-article article-root-class-name">
+                    <img alt="Le pain Kalamata, Le Kalamata" src="images/Kalamata.png" class="article-image" />
+                    <div class="article-content">
+                        <div class="article-heading">
+                            <h2 class="article-header">
+                                <span>Le Kalamata</span>
+                            </h2>
+                            <p class="article-description">
+                                <span>
+                                    Un pain aux olives de Kalamata. Olives originaire de la Grèce, 
+                                    qui se différencie par sa belle couleur violette.
+                                </span>
+                            </p>
+                        </div>
+                        <button class="button-arrow button">
+                            <a href="#formulaire_de_resa" class="article-text">Réserver</a>
+                            <span class="article-text1">&gt;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!--------------------------------------------------------------------------------
+                        Accueil - 5ème section Formulaire de reservation
+---------------------------------------------------------------------------------->
+
+<section id="section_reservation" class="contact">
+    <div class="home-depot-content">
 
         <div class="section-title">
-          <h2>Produits</h2>
-          <p>Retrouver tous les produits, ainsi que leurs spécificités.</p>
+            <h2 class="home-text18">Réservation</h2>
+            <p class="home-depot-text" style="padding-bottom: 30px;">Réservez votre pain afin de le récupérer dans votre bar à jus !</p>
         </div>
 
-        <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">Tous</li>
-              <li data-filter=".filter-pain">Les pains</li>
-              <!-- <li data-filter=".filter-card">Les jus</li> -->
-              <!-- <li data-filter=".filter-web">Les patisseries</li> -->
-            </ul>
-          </div>
-        </div>
+        <div class="row" data-aos="fade-in">
 
-        <div class="row portfolio-container" >
-
-            <div class="card col-lg-4 col-md-6 portfolio-item filter-pain" data-aos="fade-up" data-aos-delay="100">
-                <div class="card-img-to portfolio-wrap">
-                    <img src="{{ asset('/images/pain_de_campagne.jpg') }}" class="img-fluid" alt="photo du pain de campagne">
-                    <div class="portfolio-links">
-                        <a href="#formulaire_de_resa">Réserver</a>
-                    </div>
-                </div>
-                <div class="card-body">
-                    <p><strong>Le campagne</strong>, fabriqué selon le savoir-faire traditionnel est un pain distingué par sa croûte, la couleur légèrement beige de sa mie et sa saveur quelque peu acide.</p>
-                </div>
-            </div>
-
-            <div class="card col-lg-4 col-md-6 portfolio-item filter-pain" data-aos="fade-up" data-aos-delay="200">
-                <div class="card-img-to portfolio-wrap">
-                    <img src="{{ asset('/images/ble_pop.jpg') }}" class="img-fluid" alt="Photo du pain blé pop">
-                    <div class="portfolio-links">
-                        <a href="#formulaire_de_resa">Réserver</a>
-                    </div>
-                </div>
-                <div class="card-body">
-                <p><strong>Le blé pop</strong> est un pain de couleur grisé qui a des arômes légèrement fruités. Il est parfait en pain de tous les jours.</p>
-                </div>
-            </div>
-
-            <div class="card col-lg-4 col-md-6 portfolio-item filter-pain" data-aos="fade-up" data-aos-delay="300">
-                <div class="card-img-to portfolio-wrap">
-                    <img src="{{ asset('/images/kalamata.jpg') }}" class="img-fluid" alt="Photo du pain blé pop">
-                    <div class="portfolio-links">
-                        <a href="#formulaire_de_resa">Réserver</a>
-                    </div>
-                </div>
-                <div class="card-body">
-                <p><strong>Le Kalamata</strong> est un pain aux olives de Kalamata. Olives originaire de la Grèce, qui se différencie par sa belle couleur violette.</p>
-                </div>
-            </div>
-
-        </div>
-
-      </div>
-    </section><!-- End Portfolio Section -->
-
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-        <div class="container">
-
-            <div class="section-title">
-                <h2>Réservation</h2>
-                <p>Réservez votre pain afin de le récupérer dans votre bar à jus !</p>
-            </div>
-
-            <div class="row" data-aos="fade-in">
-
-                <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-right">
-                    <div class="info">
-                        <div class="address">
-                            <i class="icofont-google-map"></i>
-                            <h4>Adresse:</h4>
-                            <p>8 rue Désiré Charton, 93100 Montreuil</p>
-                        </div>
-
-                        <!-- <div class="email">
-                            <i class="icofont-envelope"></i>
-                            <h4>Email:</h4>
-                            <p>adresse email ?</p>
-                        </div> -->
-
-                        <div class="phone">
-                            <i class="icofont-phone"></i>
-                            <h4>Téléphone:</h4>
-                            <p>06 51 29 65 20</p>
-                        </div>
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.5313570343665!2d2.4481788760570926!3d48.86714630009075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66d4ef21236e9%3A0x1af09451d7386c42!2s8%20Rue%20D%C3%A9sir%C3%A9%20Charton%2C%2093100%20Montreuil!5e0!3m2!1sfr!2sfr!4v1701300502307!5m2!1sfr!2sfr" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+            <div class="col-lg-5 d-flex align-items-stretch" data-aos="fade-right">
+                <div class="info">
+                    <div class="address">
+                        <i class="icofont-google-map"></i>
+                        <h4>Adresse:</h4>
+                        <p>8 rue Désiré Charton, 93100 Montreuil</p>
                     </div>
 
-                </div>
-                
-                <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-left">
-                    <div class="info" id="formulaire_de_resa">
-                        <h2 style="color: #173b6c;">Formulaire de réservation</h2>
-                        {{ form_start(form) }}
-                        <div class="form-row">
-                            <div class="form-group col-md-6">
-                                {{ form_row(form.nomClient) }}
-                            </div>
+                    <!-- <div class="email">
+                        <i class="icofont-envelope"></i>
+                        <h4>Email:</h4>
+                        <p>adresse email ?</p>
+                    </div> -->
 
-                            <div class="form-group col-md-6">
-                                {{ form_row(form.emailClient) }}
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            {{ form_row(form.telephoneClient) }}
-                        </div>
-                        <div class="form-group">
-                            <h3>Produits et quantités</h3>
-                            <div id="detailCommande" data-prototype="{{ form_widget(form.detailCommande.vars.prototype)|e('html_attr') }}">
-                                {% for produitForm in form.detailCommande %}
-                                    <div class="produit-quantite">
-                                        {{ form_row(produitForm.produit, {'attr': {'class': 'produit', 'placehorder' : 'Sélectionner un produit'}}) }}
-                                        {{ form_row(produitForm.quantite) }}
-                                    </div>
-                                {% endfor %}
-                            </div>
-                            <a href="#" class="add_produit_link">Ajouter un produit</a>
-                        </div>
+                    <div class="phone">
+                        <i class="icofont-phone"></i>
+                        <h4>Téléphone:</h4>
+                        <p>06 51 29 65 20</p>
+                    </div>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2624.5313570343665!2d2.4481788760570926!3d48.86714630009075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47e66d4ef21236e9%3A0x1af09451d7386c42!2s8%20Rue%20D%C3%A9sir%C3%A9%20Charton%2C%2093100%20Montreuil!5e0!3m2!1sfr!2sfr!4v1701300502307!5m2!1sfr!2sfr" frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+                </div>
+
+            </div>
+            
+            <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-left">
+                <div class="info" id="formulaire_de_resa">
+                    <h2  class="mb-5" style="color: rgb(18, 40, 33);">Formulaire de réservation</h2>
+                    {{ form_start(form) }}
+                    <div class="form-row">
                         <div class="form-group col-md-6">
-                            <small id="emailHelp" class="form-text text-muted">*Vos données restent confidentielles</small>
+                            {{ form_row(form.nomClient) }}
                         </div>
-                        <div class="text-center"><button class="btn btn-primary my-2 mx-2">{{ button_label|default('Réserver') }}</button></div>
-                    {{ form_end(form) }}
-                    </div>
-                </div>
 
+                        <div class="form-group col-md-6">
+                            {{ form_row(form.emailClient) }}
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        {{ form_row(form.telephoneClient) }}
+                    </div>
+                    <div class="form-group">
+                        <h3>Produits et quantités</h3>
+                        <div id="detailCommande" data-prototype="{{ form_widget(form.detailCommande.vars.prototype)|e('html_attr') }}">
+                            {% for produitForm in form.detailCommande %}
+                                <div class="produit-quantite">
+                                    {{ form_row(produitForm.produit, {'attr': {'class': 'produit', 'placehorder' : 'Sélectionner un produit'}}) }}
+                                    {{ form_row(produitForm.quantite) }}
+                                </div>
+                            {% endfor %}
+                        </div>
+                        <a href="#" class="add_produit_link">Ajouter un produit</a>
+                    </div>
+                    <div class="form-group col-md-6">
+                        <small id="emailHelp" class="form-text text-muted">*Vos données restent confidentielles</small>
+                    </div>
+                    <div class="text-center"><button class="btn btn-resa my-2 mx-2">{{ button_label|default('Réserver') }}</button></div>
+                {{ form_end(form) }}
+                </div>
             </div>
 
         </div>
-    </section><!-- End Contact Section -->
 
-</main><!-- End #main -->
+    </div>
+</section><!-- End Contact Section -->
 
 
+<!--------------------------------------------------------------------------------
+                                    Accueil - 6ème section Logo + à très vite chez OSTAJ
+---------------------------------------------------------------------------------->
 
-<!-- ======= Footer ======= -->
-<footer id="footer">
-    <div class="container">
-        <div class="copyright">
-            &copy; Copyright <strong><span>On S'Tient Au Jus</span></strong>
+<section id="logo-bye">
+    <div class="home-depot-content">
+        <div class="home-highlight1-bye" data-aos="fade-in" data-aos-duration="500">
+            <div class="home-image3-bye">
+                <img alt="Logo de la marque, un petit garçon souriant, tenant un verre de jus frai dans une main, et qui fait un signe de l'autre main" src="{{ asset('images/Ostaj.png') }}" class="home-image4-bye" />
+            </div>
+            <div class="home-content04-bye">
+                <div class="home-heading04-bye">
+                    <h2 class="home-header03-bye">
+                        A très vite<br/> chez On S'Tient Au Jus !
+                    </h2>
+                </div>
+            </div>
         </div>
     </div>
-</footer><!-- End  Footer -->
+</section>
 
 <a href="#" class="back-to-top"><i class="icofont-simple-up"></i></a>
-{% block javascripts %}
-
-
-
-
-
-
-
-<script>
-    // Script pour ajouter dynamiquement des champs de produits
-var $detailCommande = $('#detailCommande');
-var index = {{ form.detailCommande|length }};
-
-$('.add_produit_link').click(function(e) {
-    addProduitForm($detailCommande);
-    e.preventDefault();
-    return false;
-});
-
-function addProduitForm($detailCommande) {
-    var template = $detailCommande.attr('data-prototype').replace(/__name__/g, index);
-    var $produitForm = $(template);
-
-    // Désélectionner le produit ayant l'ID 1 dans le champ de sélection de produits
-    $produitForm.find('select').val(null);
-
-    // Empêcher de sélectionner un produit déjà choisi dans un autre champ de produit
-    var selectedProducts = [];
-    $detailCommande.find('select').each(function() {
-        var selectedProduct = $(this).val();
-        if (selectedProduct !== null) {
-            selectedProducts.push(selectedProduct);
-        }
-    });
-
-    $produitForm.find('select').change(function() {
-        var selectedProduct = $(this).val();
-        if (selectedProducts.includes(selectedProduct)) {
-            alert("Ce produit a déjà été choisi. Veuillez sélectionner un autre produit.");
-            $(this).val(null);
-        } else {
-            selectedProducts.push(selectedProduct);
-        }
-    });
-
-    $detailCommande.append($produitForm);
-    index++;
-}
-
-
-</script>
 
 {% endblock %}
 
+{% block javascripts %}
+    <script>
+        // Script pour ajouter dynamiquement des champs de produits
+    var $detailCommande = $('#detailCommande');
+    var index = {{ form.detailCommande|length }};
+
+    $('.add_produit_link').click(function(e) {
+        addProduitForm($detailCommande);
+        e.preventDefault();
+        return false;
+    });
+
+    function addProduitForm($detailCommande) {
+        var template = $detailCommande.attr('data-prototype').replace(/__name__/g, index);
+        var $produitForm = $(template);
+
+        // Désélectionner le produit ayant l'ID 1 dans le champ de sélection de produits
+        $produitForm.find('select').val(null);
+
+        // Empêcher de sélectionner un produit déjà choisi dans un autre champ de produit
+        var selectedProducts = [];
+        $detailCommande.find('select').each(function() {
+            var selectedProduct = $(this).val();
+            if (selectedProduct !== null) {
+                selectedProducts.push(selectedProduct);
+            }
+        });
+
+        $produitForm.find('select').change(function() {
+            var selectedProduct = $(this).val();
+            if (selectedProducts.includes(selectedProduct)) {
+                alert("Ce produit a déjà été choisi. Veuillez sélectionner un autre produit.");
+                $(this).val(null);
+            } else {
+                selectedProducts.push(selectedProduct);
+            }
+        });
+
+        $detailCommande.append($produitForm);
+        index++;
+    }
 
 
+    </script>
 
 {% endblock %}

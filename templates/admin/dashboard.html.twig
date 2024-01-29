@@ -113,8 +113,8 @@
             <!-- End Customers Card -->
 
             <!-- Reports -->
-            <div class="col-12 tableau-commande">
-                <div class="alert alert-warning" style="width: fit-content;">
+            <div class="col-md-12 tableau-commande">
+                <div class="alert alert-warning">
                   <a href="{{ asset('/admin/commande/encours')}}">
                     <h5 class="titre-commande">Réservation de pains en cours</h5>
                   </a>
@@ -184,7 +184,7 @@
             </div><!-- End Reports -->
 
             <!-- Début liste des produits -->
-            <div class="col-12 tableau-produit">
+            <div class="col-md-12 tableau-produit">
 			      
                 {% for label,messages in app.flashes %}
                   <div class="container text-center my-5">
@@ -196,7 +196,7 @@
                   </div>
                 {% endfor %}
 
-                <div class="alert alert-info" style="width: fit-content;">
+                <div class="alert alert-info">
                   <!-- <div class="card-body"> -->
                     <div class="d-flex justify-content-between">
                       <a href="{{ asset('/admin/produit')}}">
@@ -245,8 +245,8 @@
             <!-- Fin liste des produits -->
 
             <!-- Début liste des utilisateurs -->
-            <div class="col-12 tableau-utilisateur">
-              <div class="alert alert-success" style="width: fit-content;">
+            <div class="col-md-12 tableau-utilisateur">
+              <div class="alert alert-success">
 
                 <!-- <div class="card-body"> -->
                   <h5 class="card-title">Liste des utilisateurs</h5>

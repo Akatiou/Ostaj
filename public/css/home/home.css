@@ -1,67 +1,884 @@
 /*------------------------------------------------------------------------------
-    CSS Home - page d'accueil
+    CSS - 1ère partie, Hero
 --------------------------------------------------------------------------------*/
 
-.hero-container {
+.home-hero {
+    gap: 48px;
+    width: 100%;
+    height: 700px;
     display: flex;
-    flex-direction: column;
-    align-content: flex-start;
-    text-align: center;
-    margin-left: 10%;
-    text-transform: uppercase;
+    position: relative;
+    max-width: 1324px;
+    align-items: center;
+    padding-left: 24px;
+    padding-right: 24px;
+    flex-direction: row;
 }
 
-#hero .bouton-resa {
+.home-content {
+    gap: 16px;
+    width: auto;
+    display: flex;
     position: relative;
-    z-index: 2;
-    min-width: 300px;
+    max-width: 1280px;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-top: 150px;
+}
+
+.home-title {
+    color: rgb(18, 40, 33);
+    font-size: 50px;
+    max-width: 600px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 92px;
+}
+
+.home-description {
+    color: rgb(18, 40, 33);
+    font-size: 24px;
+    max-width: 600px;
+    font-family: Lato;
+    line-height: 36px;
+}
+
+.home-image {
+    left: 0px;
+    width: 240px;
+    bottom: -410px;
+    height: 330px;
+    position: absolute;
+    object-fit: cover;
+}
+
+.home-image01 {
+    width: 720px;
+    height: 700px;
+    display: flex;
+    overflow-x: hidden;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: rgba(250, 228, 142, 1);
+}
+
+.home-image02 {
+    height: 100%;
+    object-fit: cover;
+}
+
+
+/* .home-image03 {
+    right: 0px;
+    bottom: 0px;
+    height: 390px;
+    position: absolute;
+    object-fit: cover;
+} */
+
+
+/* ---------------------
+        Resposive
+--------------------*/
+
+@media (max-width: 1076px) {
+    .home-content {
+        /* margin-top: 200px; */
+    }
+}
+
+@media (max-width: 991px) {
+    .home-hero {
+        gap: 48px;
+        height: auto;
+        align-items: flex-start;
+        padding-left: 24px;
+        padding-right: 24px;
+        flex-direction: column;
+    }
+    .home-image {
+        display: none;
+    }
+    .home-image01 {
+        width: 100%;
+        height: auto;
+        position: static;
+        align-items: flex-end;
+        aspect-ratio: 1;
+        justify-content: flex-start;
+    }
+    .home-title {
+        padding-top: 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .home-title {
+        font-size: 36px;
+        line-height: 46px;
+    }
+    .home-description {
+        /* font-size: 16px; */
+        /* line-height: 24px; */
+    }
+}
+
+
+/*------------------------------------------------------------------------------
+    CSS - 2ème partie, Hero
+--------------------------------------------------------------------------------*/
+
+.home-mission {
+    gap: 48px;
+    width: 100%;
+    display: flex;
+    max-width: 1280px;
+    align-items: flex-start;
+    padding-top: 120px;
+    padding-left: 290px;
+    flex-direction: column;
+    padding-bottom: 120px;
+}
+
+.home-text08 {
+    color: rgba(18, 40, 33, 1);
+    font-size: 40px;
+    max-width: 1000px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 51px;
+}
+
+.home-button06 a {
+    color: rgb(18, 40, 33);
+    font-weight: 600;
+}
+
+.home-text09 {
+    line-height: 21px;
+}
+
+
+/* ---------------------
+        Resposive
+--------------------*/
+
+@media (max-width: 991px) {
+    .home-mission {
+        gap: 16px;
+        padding: 48px 24px 64px 24px;
+    }
+    .home-text08 {
+        font-size: 40px;
+        text-align: center;
+        line-height: normal;
+    }
+    .home-button06 {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+
+/*------------------------------------------------------------------------------
+    CSS - 3ème partie, Nos services
+--------------------------------------------------------------------------------*/
+
+.home-notes-services {
+    width: 100%;
+    display: flex;
+    /* max-width: 1400px; */
+    align-items: center;
+    flex-direction: column;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: rgba(255, 255, 186, 0.4);
+    /* background-color: rgb(255, 179, 186, 0.3); */
+}
+
+
+/* Titre */
+
+.home-text18 {
+    color: rgb(18, 40, 33);
+    width: 100%;
+    font-size: 56px;
+    max-width: 1000px;
+    font-style: normal;
+    font-weight: 600;
+    align-self: flex-start;
+    /* padding-left: 24px; */
+    padding-bottom: 24px;
+}
+
+.home-first-services {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+
+.home-content-services {
+    gap: 24px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 24px 50px;
+    flex-direction: column;
+}
+
+.home-header-services {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 70px;
+}
+
+.home-list-services {
+    gap: 24px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.home-note-services {
+    gap: 24px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.home-point-services {
+    width: 100%;
+    height: 1px;
+    display: flex;
+    max-width: 40px;
+    margin-top: 8px;
+    align-items: center;
+    flex-direction: row;
+    background-color: #000000;
+}
+
+.home-text10-services {
+    width: 100%;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.home-note1-services {
+    gap: 24px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+}
+
+.home-point01-services {
+    width: 100%;
+    height: 1px;
+    display: flex;
+    max-width: 40px;
+    margin-top: 8px;
+    align-items: center;
+    flex-direction: row;
+    background-color: #000000;
+}
+
+.home-text11-services {
+    width: 100%;
+    font-size: 18px;
+    line-height: 27px;
+}
+
+.home-image02-services {
+    width: 50%;
+    object-fit: cover;
+    aspect-ratio: 1;
+}
+
+.image-notes-services {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 1;
+}
+
+.home-second-services {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row-reverse;
+}
+
+.home-content01-services {
+    gap: 48px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 24px 50px;
+    flex-direction: column;
+}
+
+.home-header01-services {
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 70px;
+}
+
+.home-icon12-services {
+    width: 16px;
+    height: 16px;
+}
+
+
+/* ---------------------
+        Resposive
+--------------------*/
+
+@media (max-width: 1110px) {
+    .home-header-services,
+    .home-header01-services {
+        font-size: 35px;
+        line-height: 60px;
+    }
+}
+
+@media (max-width: 991px) {
+    .home-first-services,
+    .home-second-services {
+        flex-direction: column-reverse;
+    }
+    .home-content-services,
+    .home-content01-services {
+        padding-top: 48px;
+        padding-bottom: 48px;
+    }
+    .home-image02-services {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+    .image-notes-services {
+        flex: 0 0 auto;
+        width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .home-depot-text {
+        padding-bottom: 30px !important;
+    }
+    .home-content-services,
+    .home-content01-services {
+        padding-top: 24px;
+        padding-bottom: 24px;
+    }
+}
+
+@media (max-width: 479px) {
+    .home-header-services,
+    .home-header01-services {
+        font-size: 30px;
+        line-height: 50px;
+    }
+    .home-list-services {
+        gap: 16px;
+    }
+    .home-point-services {
+        width: 100%;
+        max-width: 20px;
+    }
+    .home-text10-services {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .home-point01-services {
+        width: 100%;
+        max-width: 20px;
+    }
+    .home-text11-services {
+        font-size: 16px;
+        line-height: 24px;
+    }
+    .home-content-services,
+    .home-content01-services {
+        gap: 32px;
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+}
+
+
+/*------------------------------------------------------------------------------
+    CSS - 4ème partie, Le service dépôt de pain
+--------------------------------------------------------------------------------*/
+
+.home-depot-de-pain {
+    width: 100%;
+    /* max-width: 1400px; */
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-left: 10%;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    /* background-color: rgba(255, 223, 186, 0.8); */
+    /* background-color: rgba(255, 255, 186, 0.4); */
 }
 
-#hero a {
-    color: #fff;
+.home-depot-content {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 24px;
 }
 
-#hero .card-icon {
-    border: 5px solid #fff;
-    color: #fff;
-    font-size: 32px;
-    line-height: 0;
-    width: 64px;
-    height: 64px;
-    flex-shrink: 0;
-    flex-grow: 0;
+.home-depot-text {
+    color: rgba(18, 40, 33, 1);
+    font-size: 25px;
+    /* max-width: 1000px; */
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-align: justify;
+    padding-bottom: 80px;
 }
 
-#hero .card-icon:hover {
-    background-color: white;
-    color: #006adc;
+.home-list2 {
+    /* padding-top: 80px; */
+    gap: 64px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
 }
 
-#hero .bouton-resa p {
-    margin-top: 25px;
-    margin-left: 1%;
-    text-transform: uppercase;
-    font-weight: 700;
-    margin-bottom: 0;
+.home-row {
+    gap: 64px;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
 }
 
-.card {
-    height: 407px;
+.article-article {
+    gap: 24px;
+    width: 100%;
+    display: flex;
+    position: relative;
+    max-width: 500px;
+    align-items: center;
+    flex-direction: column;
 }
 
-.card strong {
-    text-transform: uppercase;
+.article-image {
+    width: 100%;
+    height: 375px;
+    object-fit: cover;
+}
+
+.article-content {
+    /* gap: var(--dl-space-space-threeunits); */
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.article-heading {
+    /* gap: var(--dl-space-space-unit); */
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.article-header {
+    color: rgb(53, 43, 42);
+    width: 100%;
+    font-size: 40px;
+    max-width: 800px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 60px;
+}
+
+.article-description {
+    color: rgb(53, 43, 42);
+    max-width: 800px;
+    font-size: 20px;
+    line-height: 24px;
+}
+
+.article-text {
+    font-style: normal;
+    font-weight: 500;
+}
+
+.article-text1 {
+    font-style: normal;
+    font-weight: 500;
+}
+
+.button-arrow {
+    gap: 16px;
+    color: rgb(18, 40, 33);
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    padding: 10px 20px;
+    border-width: 1px;
+    border-radius: 46px;
+    flex-direction: row;
+    background-color: rgba(230, 249, 224, 1);
+}
+
+.button-arrow a {
+    color: rgb(18, 40, 33);
+}
+
+
+/* ---------------------
+        Resposive
+--------------------*/
+
+@media(max-width: 991px) {
+    .home-depot-content {
+        align-items: center;
+        text-align: center;
+    }
+    .home-row {
+        gap: 32px;
+        flex-direction: column;
+    }
+    .article-content {
+        gap: 24px;
+        align-items: normal;
+    }
+    .article-heading {
+        align-items: center;
+    }
+    .article-header {
+        font-size: 35px;
+        line-height: 38px;
+    }
+    .button-arrow {
+        justify-content: center;
+    }
+    .article-root-class-name {
+        max-width: 100%;
+    }
+    .article-root-class-name1 {
+        max-width: 100%;
+    }
+    .article-root-class-name2 {
+        max-width: 100%;
+    }
+    .article-root-class-name3 {
+        max-width: 100%;
+    }
+    .home-list2 {
+        gap: 32px;
+    }
+}
+
+
+/*------------------------------------------------------------------------------
+    CSS - 5ème partie, Le formulaire de réservation
+--------------------------------------------------------------------------------*/
+
+#section_reservation {
+    width: 100%;
+    /* max-width: 1400px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    background-color: rgba(255, 255, 186, 0.4);
+}
+
+
+/*--------------------------------------------------------------
+ Contact
+--------------------------------------------------------------*/
+
+.contact {
+    padding-bottom: 130px;
+}
+
+.contact .info {
+    padding: 30px;
+    background: #fff;
+    width: 100%;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+}
+
+.contact .info i {
+    font-size: 20px;
+    color: #149ddd;
+    float: left;
+    width: 44px;
+    height: 44px;
+    background: #dff3fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    transition: all 0.3s ease-in-out;
+}
+
+.contact .info h4 {
+    padding: 0 0 0 60px;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #050d18;
+}
+
+.contact .info p {
+    padding: 0 0 10px 60px;
+    margin-bottom: 20px;
+    font-size: 14px;
     color: #173b6c;
 }
 
-.portfolio-links a {
-    font-size: 20px !important;
+.contact .info .email p {
+    padding-top: 5px;
+}
+
+.contact .info .email:hover i,
+.contact .info .address:hover i,
+.contact .info .phone:hover i {
+    background: #149ddd;
+    color: #fff;
+}
+
+.contact .php-email-form {
+    width: 100%;
+    padding: 30px;
+    background: #fff;
+    box-shadow: 0 0 24px 0 rgba(0, 0, 0, 0.12);
+}
+
+.contact .php-email-form .form-group {
+    padding-bottom: 8px;
+}
+
+.contact .php-email-form .validate {
+    display: none;
+    color: red;
+    margin: 0 0 15px 0;
+    font-weight: 400;
+    font-size: 13px;
+}
+
+.contact .php-email-form .error-message {
+    display: none;
+    color: #fff;
+    background: #ed3c0d;
+    text-align: left;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.contact .php-email-form .error-message br+br {
+    margin-top: 25px;
+}
+
+.contact .php-email-form .sent-message {
+    display: none;
+    color: #fff;
+    background: #18d26e;
+    text-align: center;
+    padding: 15px;
+    font-weight: 600;
+}
+
+.contact .php-email-form .loading {
+    display: none;
+    background: #fff;
+    text-align: center;
+    padding: 15px;
+}
+
+.contact .php-email-form .loading:before {
+    content: "";
+    display: inline-block;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    margin: 0 10px -6px 0;
+    border: 3px solid #18d26e;
+    border-top-color: #eee;
+    -webkit-animation: animate-loading 1s linear infinite;
+    animation: animate-loading 1s linear infinite;
+}
+
+.contact .php-email-form input,
+.contact .php-email-form textarea {
+    border-radius: 0;
+    box-shadow: none;
+    font-size: 14px;
+}
+
+.contact .php-email-form input {
+    height: 44px;
+}
+
+.contact .php-email-form textarea {
+    padding: 10px 12px;
+}
+
+.contact .php-email-form button[type="submit"] {
+    background: #149ddd;
+    border: 0;
+    padding: 10px 24px;
+    color: #fff;
+    transition: 0.4s;
+    border-radius: 4px;
+}
+
+.contact .php-email-form button[type="submit"]:hover {
+    background: #37b3ed;
+}
+
+@-webkit-keyframes animate-loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes animate-loading {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
 }
 
 fieldset {
-    visibility: hidden;
+    display: none;
+}
+
+.btn-resa {
+    background-color: rgb(18, 40, 33);
+    color: #fff
+}
+
+.btn-resa:hover {
+    background-color: rgba(230, 249, 224, 1);
+    color: rgb(18, 40, 33);
+    border: 1px solid;
+}
+
+
+/*------------------------------------------------------------------------------
+    CSS - 6ème partie, Logo + à très vite chez OSTAJ !
+--------------------------------------------------------------------------------*/
+
+#logo-bye {
+    width: 100%;
+    /* max-width: 1400px; */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+}
+
+.home-highlight1-bye {
+    gap: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.home-image3-bye {
+    height: 530px;
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    align-items: flex-end;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.home-image4-bye {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.home-content04-bye {
+    gap: 48px;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.home-heading04-bye {
+    gap: 24px;
+    width: 100%;
+    display: flex;
+    max-width: 500px;
+    align-items: flex-start;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.home-header03-bye {
+    color: rgb(53, 43, 42);
+    font-size: 60px;
+    font-style: normal;
+    text-align: center;
+    font-weight: 700;
+    line-height: 60px;
+}
+
+
+/* ---------------------
+        Resposive
+--------------------*/
+
+@media(max-width: 991px) {
+    .home-highlight1-bye {
+        gap: 32px;
+        /* align-items: flex-start; */
+        flex-direction: column-reverse;
+    }
+    .home-image3-bye {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media(max-width: 767px) {
+    #logo-bye {
+        padding-top: 30px;
+        padding-bottom: 0;
+    }
+    .home-image3-bye {
+        width: 100%;
+        height: auto;
+    }
+    .home-content04-bye {
+        gap: 34px;
+    }
+    .home-heading04-bye {
+        gap: 16px;
+    }
+    .home-header03-bye {
+        font-size: 32px;
+        line-height: 51px;
+    }
 }

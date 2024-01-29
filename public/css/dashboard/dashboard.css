@@ -14,6 +14,11 @@ h6 {
     font-weight: bold;
 }
 
+
+/* .alert {
+    width: max-content;
+} */
+
 table {
     overflow-x: auto;
 }
@@ -113,4 +118,13 @@ table {
 }
 
 
-/*--------------------Commandes en cours--------------*/
+/*--------------------Responsive--------------*/
+
+
+/* @media(max-width: 800px) {
+    .tableau-utilisateur .alert,
+    .tableau-produit .alert,
+    .tableau-commande .alert {
+        width: max-content;
+    }
+} */
