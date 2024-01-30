@@ -1,0 +1,60 @@
+.page-confidentialite {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 210px;
+    padding-bottom: 60px;
+}
+
+.confidentialite-content {
+    width: 100%;
+    max-width: 1400px;
+    display: flex;
+    flex-direction: column;
+    padding: 0px 24px;
+}
+
+.Confidentialite-titre1 {
+    color: rgb(18, 40, 33);
+    width: 100%;
+    font-size: 56px;
+    max-width: 1000px;
+    font-style: normal;
+    font-weight: 600;
+    align-self: flex-start;
+    padding-bottom: 24px;
+}
+
+.confidentialite-paragraphe {
+    gap: 30px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    padding: 24px 50px;
+    flex-direction: column;
+}
+
+.confidentialite-contenue {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.confidentialite-sous-titre {
+    color: rgba(18, 40, 33, 1);
+    font-size: 35px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 30px;
+    letter-spacing: 1px;
+    align-self: flex-start;
+    padding-bottom: 24px;
+}
+
+.confidentialite-text {
+    font-size: 30px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 40px;
+}

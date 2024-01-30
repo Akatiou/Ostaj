@@ -70,24 +70,9 @@
 }
 
 
-/* .home-image03 {
-    right: 0px;
-    bottom: 0px;
-    height: 390px;
-    position: absolute;
-    object-fit: cover;
-} */
-
-
 /* ---------------------
         Resposive
 --------------------*/
-
-@media (max-width: 1076px) {
-    .home-content {
-        /* margin-top: 200px; */
-    }
-}
 
 @media (max-width: 991px) {
     .home-hero {
@@ -189,13 +174,11 @@
 .home-notes-services {
     width: 100%;
     display: flex;
-    /* max-width: 1400px; */
     align-items: center;
     flex-direction: column;
     padding-top: 60px;
     padding-bottom: 60px;
     background-color: rgba(255, 255, 186, 0.4);
-    /* background-color: rgb(255, 179, 186, 0.3); */
 }
 
 
@@ -209,7 +192,6 @@
     font-style: normal;
     font-weight: 600;
     align-self: flex-start;
-    /* padding-left: 24px; */
     padding-bottom: 24px;
 }
 
@@ -416,14 +398,11 @@
 
 .home-depot-de-pain {
     width: 100%;
-    /* max-width: 1400px; */
     display: flex;
     flex-direction: column;
     align-items: center;
     padding-top: 60px;
     padding-bottom: 60px;
-    /* background-color: rgba(255, 223, 186, 0.8); */
-    /* background-color: rgba(255, 255, 186, 0.4); */
 }
 
 .home-depot-content {
@@ -437,7 +416,6 @@
 .home-depot-text {
     color: rgba(18, 40, 33, 1);
     font-size: 25px;
-    /* max-width: 1000px; */
     font-style: normal;
     font-weight: 600;
     line-height: 30px;
@@ -447,7 +425,6 @@
 }
 
 .home-list2 {
-    /* padding-top: 80px; */
     gap: 64px;
     width: 100%;
     display: flex;
@@ -480,7 +457,6 @@
 }
 
 .article-content {
-    /* gap: var(--dl-space-space-threeunits); */
     width: 100%;
     display: flex;
     align-items: flex-start;
@@ -488,7 +464,6 @@
 }
 
 .article-heading {
-    /* gap: var(--dl-space-space-unit); */
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -515,6 +490,11 @@
 .article-text {
     font-style: normal;
     font-weight: 500;
+    color: rgb(18, 40, 33);
+}
+
+.article-text:hover {
+    color: rgb(18, 40, 33);
 }
 
 .article-text1 {
@@ -535,8 +515,9 @@
     background-color: rgba(230, 249, 224, 1);
 }
 
-.button-arrow a {
-    color: rgb(18, 40, 33);
+.button-arrow:hover {
+    cursor: pointer;
+    transform: scale(1.1) !important;
 }
 
 
@@ -618,14 +599,15 @@
 
 .contact .info i {
     font-size: 20px;
-    color: #149ddd;
+    color: rgb(18, 40, 33);
     float: left;
     width: 44px;
     height: 44px;
-    background: #dff3fc;
+    background: rgba(230, 249, 224, 1);
     display: flex;
     justify-content: center;
     align-items: center;
+    border: 1px solid;
     border-radius: 50px;
     transition: all 0.3s ease-in-out;
 }
@@ -652,8 +634,8 @@
 .contact .info .email:hover i,
 .contact .info .address:hover i,
 .contact .info .phone:hover i {
-    background: #149ddd;
-    color: #fff;
+    background: rgb(18, 40, 33);
+    color: rgba(230, 249, 224, 1);
 }
 
 .contact .php-email-form {
@@ -733,16 +715,17 @@
 }
 
 .contact .php-email-form button[type="submit"] {
-    background: #149ddd;
-    border: 0;
+    background: rgba(230, 249, 224, 1);
+    border: 1px solid;
     padding: 10px 24px;
-    color: #fff;
+    color: rgb(18, 40, 33);
     transition: 0.4s;
     border-radius: 4px;
 }
 
 .contact .php-email-form button[type="submit"]:hover {
-    background: #37b3ed;
+    background: rgb(18, 40, 33);
+    color: rgba(230, 249, 224, 1);
 }
 
 @-webkit-keyframes animate-loading {
@@ -767,12 +750,12 @@ fieldset {
     display: none;
 }
 
-.btn-resa {
+.btn-resa:hover {
     background-color: rgb(18, 40, 33);
     color: #fff
 }
 
-.btn-resa:hover {
+.btn-resa {
     background-color: rgba(230, 249, 224, 1);
     color: rgb(18, 40, 33);
     border: 1px solid;

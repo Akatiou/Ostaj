@@ -15,9 +15,10 @@ a {
     text-decoration: none !important;
 }
 
-a:hover {
+
+/* a {
     color: rgb(18, 40, 33);
-}
+} */
 
 ul {
     list-style: none;
@@ -58,7 +59,7 @@ ul {
     width: 40px;
     height: 40px;
     border-radius: 50px;
-    right: 15px;
+    right: 1px;
     bottom: 15px;
     background: rgb(18, 40, 33);
     color: #fff;
@@ -103,7 +104,8 @@ ul {
 }
 
 .nav-link:hover {
-    opacity: 0.5;
+    cursor: pointer;
+    transform: scale(1.1);
 }
 
 .navContainer {
@@ -172,7 +174,6 @@ ul {
     border-width: 0px;
     padding-left: 1.5rem;
     border-radius: 1.875rem;
-    /* border-radius: 1rem; */
     padding-right: 1.5rem;
     padding-bottom: 0.75rem;
     border-width: 1px;
@@ -248,143 +249,6 @@ ul {
 
 .nav-link:hover {
     opacity: 0.5;
-}
-
-
-/*--------------------------------------------------------------
- Breadcrumbs
---------------------------------------------------------------*/
-
-.breadcrumbs {
-    padding: 20px 0;
-    background: #f9f9f9;
-}
-
-.breadcrumbs h2 {
-    font-size: 26px;
-    font-weight: 300;
-}
-
-.breadcrumbs ol {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 15px;
-}
-
-.breadcrumbs ol li+li {
-    padding-left: 10px;
-}
-
-.breadcrumbs ol li+li::before {
-    display: inline-block;
-    padding-right: 10px;
-    color: #0e2442;
-    content: "/";
-}
-
-@media (max-width: 768px) {
-    .breadcrumbs .d-flex {
-        display: block !important;
-    }
-    .breadcrumbs ol {
-        display: block;
-    }
-    .breadcrumbs ol li {
-        display: inline-block;
-    }
-}
-
-
-/*--------------------------------------------------------------
- Portfolio Details
---------------------------------------------------------------*/
-
-.portfolio-details {
-    padding-top: 40px;
-}
-
-.portfolio-details .portfolio-details-container {
-    position: relative;
-}
-
-.portfolio-details .portfolio-details-carousel {
-    position: relative;
-    z-index: 1;
-}
-
-.portfolio-details .portfolio-details-carousel .owl-nav,
-.portfolio-details .portfolio-details-carousel .owl-dots {
-    margin-top: 5px;
-    text-align: left;
-}
-
-.portfolio-details .portfolio-details-carousel .owl-dot {
-    display: inline-block;
-    margin: 0 10px 0 0;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: #ddd !important;
-}
-
-.portfolio-details .portfolio-details-carousel .owl-dot.active {
-    background-color: #149ddd !important;
-}
-
-.portfolio-details .portfolio-info {
-    padding: 30px;
-    position: absolute;
-    right: 0;
-    bottom: -70px;
-    background: #fff;
-    box-shadow: 0px 2px 15px rgba(0, 0, 0, 0.1);
-    z-index: 2;
-}
-
-.portfolio-details .portfolio-info h3 {
-    font-size: 22px;
-    font-weight: 400;
-    margin-bottom: 20px;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #eee;
-}
-
-.portfolio-details .portfolio-info ul {
-    list-style: none;
-    padding: 0;
-    font-size: 15px;
-}
-
-.portfolio-details .portfolio-info ul li+li {
-    margin-top: 10px;
-}
-
-.portfolio-details .portfolio-description {
-    padding-top: 50px;
-}
-
-.portfolio-details .portfolio-description h2 {
-    width: 50%;
-    font-size: 26px;
-    font-weight: 400;
-    margin-bottom: 20px;
-}
-
-.portfolio-details .portfolio-description p {
-    padding: 0;
-}
-
-@media (max-width: 768px) {
-    .portfolio-details .portfolio-description h2 {
-        width: 100%;
-    }
-    .portfolio-details .portfolio-info {
-        position: static;
-        margin-top: 30px;
-    }
 }
 
 
@@ -533,6 +397,12 @@ ul {
     color: #212529
 }
 
+.footer-link:hover {
+    color: rgb(18, 40, 33);
+    cursor: pointer;
+    transform: scale(1.1) !important;
+}
+
 
 /* ---------------------
         Resposive
@@ -561,40 +431,3 @@ ul {
         padding-left: 10px;
     }
 }
-
-
-/*--------------------------------------------------------------
- Footer
---------------------------------------------------------------*/
-
-
-/* #footer {
-    padding: 15px;
-    color: #f4f6fd;
-    font-size: 14px;
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 300px;
-    z-index: 9999;
-    background: #040b14;
-}
-
-#footer .copyright {
-    text-align: center;
-}
-
-#footer .credits {
-    padding-top: 5px;
-    text-align: center;
-    font-size: 13px;
-    color: #eaebf0;
-}
-
-@media (max-width: 1199px) {
-    #footer {
-        position: static;
-        width: auto;
-        padding-right: 20px 15px;
-    }
-} */

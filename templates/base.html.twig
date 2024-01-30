@@ -32,7 +32,6 @@
         <link href="{{ asset('vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
         <link href="{{ asset('vendor/venobox/venobox.css') }}" rel="stylesheet">
         <link href="{{ asset('vendor/owl.carousel/assets/owl.carousel.min.css') }}" rel="stylesheet">
-        <link href="{{ asset('/vendor/aos/aos.css') }}" rel="stylesheet">
 
         <!-- Link data-aos (CSS) -->
         <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
@@ -57,7 +56,7 @@
             <header class="fixed-top navHeader">
                 <nav class="container navbar navbar-expand-lg navbar-light navbarWrapper">
                     <div class="container-fluid">
-                        <a class="navbar-brand home-branding p-0" href="#">
+                        <a class="navbar-brand home-branding p-0" href="{{ path('home') }}">
                             <img src="{{ asset('images/Ostaj.png') }}" class="d-block mx-auto nav-logo" id="logo-navbar" alt="Logo de la marque, un petit garçon souriant, tenant un verre de jus frai dans une main, et qui fait un signe de l'autre main">
                             <h2 class="navbar-brand text-center m-0 navbar-title" id="titre-navbar">OSTAJ - On S'Tient Au Jus</h2>
                         </a>
@@ -67,7 +66,7 @@
                         <div class="collapse navbar-collapse justify-content-md-center" id="navbarNavDropdown">
                             <ul class="navbar-nav">
                                 <li class="nav-item">
-                                    <a class="nav-link" aria-current="page" href="#">Accueil</a>
+                                    <a class="nav-link" aria-current="page" href="{{ path('home') }}">Accueil</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#les-services">Nos Services</a>
@@ -125,8 +124,8 @@
                 <div class="footer-inner">
                     <div>© 2024 - T.A.D - Tout droits réservés</div>
                     <div class="footer-links">
-                        <a class="footer-link" href="confidentialite.html">Confidentialité</a>
-                        <a class="footer-link">Mentions légales</a>
+                        <a class="footer-link" href="{{ path('politique_confidentialite') }}">Confidentialité</a>
+                        <!-- <a class="footer-link">Mentions légales</a> -->
                     </div>
                 </div>
             </div>
@@ -151,7 +150,6 @@
 <script src="{{ asset('vendor/venobox/venobox.min.js') }}"></script>
 <script src="{{ asset('vendor/owl.carousel/owl.carousel.min.js') }}"></script>
 <script src="{{ asset('vendor/typed.js/typed.min.js') }}"></script>
-<script src="{{ asset('vendor/aos/aos.js') }}"></script>
 
 <!-- Template Main JS File -->
 <script src="{{ asset('js/main.js') }}"></script>
@@ -170,7 +168,9 @@
     }
 </script>
 <script>
-    AOS.init();
+    AOS.init({
+        easing: 'ease-in-sine',
+    });
 </script>
 {% block javascripts %}{% endblock %}
 

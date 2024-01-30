@@ -82,4 +82,16 @@ class HomeController extends AbstractController
             'form' => $form->createView()
         ]);
     }
+
+    /*--------------------------------------------------------------
+                Page "Confidentialite" 
+--------------------------------------------------------------*/
+
+    /**
+     * @Route("/politiqueDeConfidentialite", name="politique_confidentialite")
+     */
+    public function politiqueDeConfidentialite()
+    {
+        return $this->render('home/confidentialite.html.twig', []);
+    }
 }
